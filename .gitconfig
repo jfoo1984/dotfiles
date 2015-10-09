@@ -12,6 +12,8 @@
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+	autocrlf = false
+	editor = vi
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -51,3 +53,6 @@
   renames = copies
 [rerere]
   enabled = true
+[user]
+	name = David Mai
+	email = david.mai@isocket.com

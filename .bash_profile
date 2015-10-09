@@ -1,3 +1,14 @@
+# override cd to execute custom stuff when called
+function cd() {
+  builtin cd "$1"
+  if [ -a ".nvmrc" ]; then
+    nvm use
+    if [ $? -eq 1 ]; then
+      nvm install && nvm use
+    fi
+  fi
+}
+
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
 for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
@@ -25,3 +36,4 @@ export LANG="en_US"
 # Add tab completion for `defaults read|write NSGlobalDomain`
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults
+eval "$(rbenv init -)"
