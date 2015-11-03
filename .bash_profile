@@ -38,3 +38,6 @@ export LANG="en_US"
 complete -W "NSGlobalDomain" defaults
 # No Ruby installed
 # eval "$(rbenv init -)"
+
+# Docker 
+$(boot2docker shellinit 2> /dev/null)
