@@ -56,3 +56,11 @@
 [user]
 	name = Jerry Fu
 	email = jerry.fu@gmail.com
+
+[credential]
+	helper = osxkeychain
+	
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
