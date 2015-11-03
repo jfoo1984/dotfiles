@@ -8,6 +8,7 @@ Fork, then update the following with your personal directories/usernames/URLs:
 * .gitconfig
 * If desired, create .apitokens for tokens that you don't want commited to git
 
+
     git clone git@github.com:jfoo1984/dotfiles.git && cd dotfiles && ./sync.sh
 
 Inspired by [Paul Irish](https://github.com/paulirish/dotfiles), [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/), [Ben Alman](https://github.com/cowboy/dotfiles), and [Max Beatty](https://github.com/maxbeatty/dotfiles)
