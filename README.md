@@ -2,6 +2,8 @@ dotfiles
 ========
 
 My config and settings files for OS X
+Fork then update the following:
+* .bashrc (home path)
 
     git clone git@github.com:jfoo1984/dotfiles.git && cd dotfiles && ./sync.sh
 
