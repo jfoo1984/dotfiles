@@ -1,4 +1,4 @@
-Max's dotfiles
+dotfiles
 ========
 
 My config and settings files for OS X
