@@ -53,4 +53,6 @@ PERL_MB_OPT="--install_base \"/Users/jfu/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/jfu/perl5"; export PERL_MM_OPT;
 
 # thefuck
-eval "$(thefuck --alias)"
+if [[ "$unamestr" != 'Linux' ]]; then
+    eval "$(thefuck --alias)"
+fi
