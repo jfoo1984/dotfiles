@@ -18,7 +18,7 @@ To get that set up correctly, run
     git submodule update
 ```
 
-The packages that Vundle installs are listed in the .vimrc, but the repositories for those packages are not included here.  To get all the desired bundles installed,
+The packages that Vundle installs are listed in the .vimrc, but the repositories for those packages are not included here.  To get vim plugins installed, after running sync.sh,
 ```
     vim
     :PluginInstall
