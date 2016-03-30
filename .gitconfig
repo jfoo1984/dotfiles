@@ -3,7 +3,7 @@
   df = diff --color --color-words --abbrev
   lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
 [help]
-	autocorrect = 1
+  autocorrect = 1
 [color]
   ui = always
 [apply]
@@ -12,8 +12,8 @@
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-	autocrlf = false
-	editor = vi
+  autocrlf = false
+  editor = vim
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -54,13 +54,13 @@
 [rerere]
   enabled = true
 [user]
-	name = Jerry Fu
-	email = jerry.fu@gmail.com
+  name = Jerry Fu
+  email = jerry.fu@gmail.com
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 	
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
