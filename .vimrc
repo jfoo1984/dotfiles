@@ -17,8 +17,29 @@ Plugin 'VundleVim/Vundle.vim'
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
 
+" surround.vim
+Plugin 'tpope/vim-surround'
+
 " solarized color scheme
 Plugin 'altercation/vim-colors-solarized'
+
+" vim-javascript
+Plugin 'pangloss/vim-javascript'
+
+" vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
+
+" NERD TREE
+Plugin 'scrooloose/nerdtree'
+
+" NERD Commenter
+Plugin 'scrooloose/nerdcommenter'
+
+" youcompleteme
+Plugin 'valloric/youcompleteme'
+
+" Syntastic
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
