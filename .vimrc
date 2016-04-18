@@ -41,6 +41,11 @@ Plugin 'valloric/youcompleteme'
 " Syntastic
 Plugin 'scrooloose/syntastic'
 
+" phpcomplete-extended
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/unite.vim'
+Bundle 'm2mdas/phpcomplete-extended'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
