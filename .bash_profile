@@ -56,3 +56,7 @@ PERL_MM_OPT="INSTALL_BASE=/Users/jfu/perl5"; export PERL_MM_OPT;
 if [[ "$unamestr" != 'Linux' ]]; then
     eval "$(thefuck --alias)"
 fi
+
+# PHP Switcher script for web dev env - https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
+# export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/Users/jfu/bin
+
