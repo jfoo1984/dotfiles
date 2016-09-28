@@ -16,11 +16,12 @@ for file in ~/.{extra,bash_prompt,exports,aliases,functions,apitokens}; do
 done
 unset file
 
+# ruby version manager
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 # node version manager
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 unamestr=`uname`
 if [[ "$unamestr" != 'Linux' ]]; then
@@ -59,4 +60,4 @@ fi
 
 # PHP Switcher script for web dev env - https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
 # export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/Users/jfu/bin
-
+export PATH="/usr/local/sbin:$PATH"
