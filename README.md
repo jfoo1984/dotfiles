@@ -11,14 +11,12 @@ Fork, then update the following with your personal directories/usernames/URLs:
 ```
 
 ## .vim 
-Vundle is used to manage vim plugins, and is included as a submodule at .vim/bundle/Vundle.vim.
-To get that set up correctly, run 
+Vundle is used to manage vim plugins.  To set that up, first checkout Vundle into the appropriate place
 ```
-    git submodule init
-    git submodule update
+cd ~
+git clone https://github.com/gmarik/Vundle.vim.git .vim/bundle/Vundle.vim
 ```
-
-The packages that Vundle installs are listed in the .vimrc, but the repositories for those packages are not included here.  To get vim plugins installed, after running sync.sh,
+Then run the following commands.  You may get some errors running `vim`, but all should be well after `:PluginInstall`
 ```
     vim
     :PluginInstall
