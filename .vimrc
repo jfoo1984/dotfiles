@@ -11,8 +11,15 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
+
+" for ruby dev
+Bundle 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-projectionist'
+Plugin 'jlanzarotta/bufexplorer'
 
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
@@ -57,13 +64,15 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
+" show existing tab with 2 spaces width
+set tabstop=2
+" when indenting with '>', use 2 spaces width
+set shiftwidth=2
+" On pressing tab, insert 2 spaces
 set expandtab
 
 syntax enable
 set background=dark
 colorscheme solarized
+
+set number
