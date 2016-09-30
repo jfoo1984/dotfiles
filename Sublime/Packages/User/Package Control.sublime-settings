@@ -1,0 +1,22 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"All Autocomplete",
+		"Clipboard Manager",
+		"CloseOtherWindows",
+		"DashDoc",
+		"DocBlockr",
+		"Emmet",
+		"GitGutter",
+		"Package Control",
+		"Solarized Color Scheme",
+		"SublimeLinter",
+		"SublimeLinter-jshint",
+		"SublimeLinter-ruby"
+	]
+}
