@@ -23,4 +23,11 @@ Then run the following commands.  You may get some errors running `vim`, but all
 ```
 Check [Vundle GitHub repo](https://github.com/VundleVim/Vundle.vim) for more details.
 
+## sublimetext
+Sublime settings and packages are usually stored in `~/Library/Application Support/Sublime Text 3/Packages/User/`.  The contents of that directory have been moved into this dotfiles folder, and can be used to configure Sublime by creating a symlink
+```
+cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
+ln -s ~/dotfiles/Sublime/Packages/User/ User
+```
+
 Inspired by [Paul Irish](https://github.com/paulirish/dotfiles), [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/), [Ben Alman](https://github.com/cowboy/dotfiles), and [Max Beatty](https://github.com/maxbeatty/dotfiles)
