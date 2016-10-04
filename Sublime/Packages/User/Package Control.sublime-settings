@@ -5,18 +5,30 @@
 	],
 	"installed_packages":
 	[
+		"AceJump",
 		"AdvancedNewFile",
 		"All Autocomplete",
+		"AutoFileName",
+		"Better CoffeeScript",
 		"Clipboard Manager",
 		"CloseOtherWindows",
 		"DashDoc",
 		"DocBlockr",
+		"EditorConfig",
 		"Emmet",
 		"GitGutter",
 		"Package Control",
 		"Solarized Color Scheme",
 		"SublimeLinter",
+		"SublimeLinter-coffee",
 		"SublimeLinter-jshint",
-		"SublimeLinter-ruby"
+		"SublimeLinter-ruby",
+		"SyncedSideBar",
+		"SyncedSidebarBg",
+		"TodoReview"
+	],
+	"repositories":
+	[
+		"https://github.com/titoBouzout/SideBarEnhancements/tree/st3\nhttps://github.com/titoBouzout/SideBarEnhancements/tree/st3\nhttps://github.com/titoBouzout/SideBarEnhancements/tree/st3"
 	]
 }
