@@ -52,7 +52,5 @@ if [[ "$unamestr" != 'Linux' ]]; then
 fi
 
 # to make brew doctor happy
-echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.bash_profile
-# PHP Switcher script for web dev env - https://getgrav.org/blog/mac-os-x-apache-setup-multiple-php-versions
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/Users/jfu/bin

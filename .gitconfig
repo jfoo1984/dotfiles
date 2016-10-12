@@ -1,11 +1,24 @@
 [alias]
+  st = status
+  ci = commit
+  br = branch
   co = checkout
   df = diff --color --color-words --abbrev
+  dc = diff --cached
   lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  ls = ls-files
+  
+  # truncated single-line git log of the last 10 commits
+  recent = log --oneline -10
+  # Show files ignored by git:
+  ign = ls-files -o -i --exclude-standard
+
 [help]
   autocorrect = 1
 [color]
-  ui = always
+  ui = auto
 [apply]
   whitespace = fix
 [core]
@@ -55,7 +68,6 @@
   enabled = true
 [user]
   name = Jerry Fu
-  email = jerry.fu@gmail.com
 
 [credential]
   helper = osxkeychain
