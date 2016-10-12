@@ -75,3 +75,8 @@ alias dt='node debug $(which coffee) test.coffee'
 alias gw='grunt watch'
 alias kn='killall -9 node'
 alias kj='killall -9 java'
+
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
+
