@@ -30,4 +30,10 @@ cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 ln -s ~/dotfiles/Sublime/Packages/User/ User
 ```
 
+## atom
+Coming soon...
+
+## Font
+* [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
+
 Inspired by [Paul Irish](https://github.com/paulirish/dotfiles), [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/), [Ben Alman](https://github.com/cowboy/dotfiles), and [Max Beatty](https://github.com/maxbeatty/dotfiles)
