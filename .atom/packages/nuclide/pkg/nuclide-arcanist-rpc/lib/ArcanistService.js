@@ -1,0 +1,356 @@
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+/*
+ * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the LICENSE file in
+ * the root directory of this source tree.
+ */
+
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
+
+var findArcConfigDirectory = _asyncToGenerator(function* (fileName) {
+  if (!arcConfigDirectoryMap.has(fileName)) {
+    var result = yield (_commonsNodeFsPromise || _load_commonsNodeFsPromise()).default.findNearestFile(ARC_CONFIG_FILE_NAME, fileName);
+    arcConfigDirectoryMap.set(fileName, result);
+  }
+  return arcConfigDirectoryMap.get(fileName);
+});
+
+exports.findArcConfigDirectory = findArcConfigDirectory;
+
+var readArcConfig = _asyncToGenerator(function* (fileName) {
+  var arcConfigDirectory = yield findArcConfigDirectory(fileName);
+  if (!arcConfigDirectory) {
+    return null;
+  }
+  if (!arcProjectMap.has(arcConfigDirectory)) {
+    var arcconfigFile = (_commonsNodeNuclideUri || _load_commonsNodeNuclideUri()).default.join(arcConfigDirectory, ARC_CONFIG_FILE_NAME);
+    var contents = yield (_commonsNodeFsPromise || _load_commonsNodeFsPromise()).default.readFile(arcconfigFile, 'utf8');
+    (0, (_assert || _load_assert()).default)(typeof contents === 'string');
+    var result = JSON.parse(contents);
+    arcProjectMap.set(arcConfigDirectory, result);
+  }
+  return arcProjectMap.get(arcConfigDirectory);
+});
+
+exports.readArcConfig = readArcConfig;
+
+var findArcProjectIdOfPath = _asyncToGenerator(function* (fileName) {
+  var project = yield readArcConfig(fileName);
+  return project ? project.project_id : null;
+});
+
+exports.findArcProjectIdOfPath = findArcProjectIdOfPath;
+
+var getProjectRelativePath = _asyncToGenerator(function* (fileName) {
+  var arcPath = yield findArcConfigDirectory(fileName);
+  return arcPath && fileName ? (_commonsNodeNuclideUri || _load_commonsNodeNuclideUri()).default.relative(arcPath, fileName) : null;
+});
+
+exports.getProjectRelativePath = getProjectRelativePath;
+
+var findDiagnostics = _asyncToGenerator(function* (pathToFiles, skip) {
+  var _ref4;
+
+  var arcConfigDirToFiles = new Map();
+  yield Promise.all(pathToFiles.map(_asyncToGenerator(function* (file) {
+    var arcConfigDir = yield findArcConfigDirectory(file);
+    if (arcConfigDir) {
+      var files = arcConfigDirToFiles.get(arcConfigDir);
+      if (files == null) {
+        files = [];
+        arcConfigDirToFiles.set(arcConfigDir, files);
+      }
+      files.push(file);
+    }
+  })));
+
+  // Kick off all the arc execs at once, then await later so they all happen in parallel.
+  var results = [];
+  for (var _ref3 of arcConfigDirToFiles) {
+    var _ref2 = _slicedToArray(_ref3, 2);
+
+    var arcDir = _ref2[0];
+    var files = _ref2[1];
+
+    results.push(execArcLint(arcDir, files, skip));
+  }
+
+  // Flatten the resulting array
+  return (_ref4 = []).concat.apply(_ref4, _toConsumableArray((yield Promise.all(results))));
+});
+
+exports.findDiagnostics = findDiagnostics;
+
+var getMercurialHeadCommitChanges = _asyncToGenerator(function* (filePath) {
+  var hgRepoDetails = (0, (_nuclideSourceControlHelpers || _load_nuclideSourceControlHelpers()).findHgRepository)(filePath);
+  if (hgRepoDetails == null) {
+    return null;
+  }
+  var filesChanged = yield (0, (_nuclideHgRpcLibHgRevisionStateHelpers || _load_nuclideHgRpcLibHgRevisionStateHelpers()).fetchFilesChangedAtRevision)((0, (_nuclideHgRpcLibHgRevisionExpressionHelpers || _load_nuclideHgRpcLibHgRevisionExpressionHelpers()).expressionForRevisionsBeforeHead)(0), hgRepoDetails.workingDirectoryPath).refCount().toPromise();
+  if (filesChanged == null) {
+    throw new Error('Failed to fetch commit changed files while diffing');
+  }
+  return filesChanged;
+});
+
+var getCommitBasedArcConfigDirectory = _asyncToGenerator(function* (filePath) {
+  // TODO Support other source control types file changes (e.g. `git`).
+  var filesChanged = yield getMercurialHeadCommitChanges(filePath);
+  if (filesChanged == null) {
+    throw new Error('Cannot find source control root to diff from');
+  }
+  var configLookupPath = null;
+  if (filesChanged.all.length > 0) {
+    configLookupPath = (_commonsNodeFsPromise || _load_commonsNodeFsPromise()).default.getCommonAncestorDirectory(filesChanged.all);
+  } else {
+    configLookupPath = filePath;
+  }
+  return yield findArcConfigDirectory(configLookupPath);
+});
+
+exports.createPhabricatorRevision = createPhabricatorRevision;
+exports.updatePhabricatorRevision = updatePhabricatorRevision;
+exports.execArcPull = execArcPull;
+exports.execArcLand = execArcLand;
+exports.execArcPatch = execArcPatch;
+
+var execArcLint = _asyncToGenerator(function* (cwd, filePaths, skip) {
+  var args = ['lint', '--output', 'json'].concat(filePaths);
+  if (skip.length > 0) {
+    args.push('--skip', skip.join(','));
+  }
+  var options = { cwd: cwd };
+  var result = yield (0, (_commonsNodeNice || _load_commonsNodeNice()).niceCheckOutput)('arc', args, options);
+
+  var output = new Map();
+  // Arc lint outputs multiple JSON objects on mutliple lines. Split them, then merge the
+  // results.
+  for (var _line of result.stdout.trim().split('\n')) {
+    var json = undefined;
+    try {
+      json = JSON.parse(_line);
+    } catch (error) {
+      (0, (_nuclideLogging || _load_nuclideLogging()).getLogger)().warn('Error parsing `arc lint` JSON output', _line);
+      continue;
+    }
+    for (var file of Object.keys(json)) {
+      var errorsToAdd = json[file];
+
+      var errors = output.get(file);
+      if (errors == null) {
+        errors = [];
+        output.set(file, errors);
+      }
+      for (var error of errorsToAdd) {
+        errors.push(error);
+      }
+    }
+  }
+
+  var lints = [];
+  for (var file of filePaths) {
+    // TODO(7876450): For some reason, this does not work for particular values of pathToFile.
+    // Depending on the location of .arcconfig, we may get a key that is different from what `arc
+    // lint` actually returns, and end up without any lints for this path.
+    var key = (_commonsNodeNuclideUri || _load_commonsNodeNuclideUri()).default.relative(cwd, file);
+    var rawLints = output.get(key);
+    if (rawLints) {
+      for (var lint of convertLints(file, rawLints)) {
+        lints.push(lint);
+      }
+    }
+  }
+  return lints;
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { var callNext = step.bind(null, 'next'); var callThrow = step.bind(null, 'throw'); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(callNext, callThrow); } } callNext(); }); }; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _assert;
+
+function _load_assert() {
+  return _assert = _interopRequireDefault(require('assert'));
+}
+
+var _rxjsBundlesRxMinJs;
+
+function _load_rxjsBundlesRxMinJs() {
+  return _rxjsBundlesRxMinJs = require('rxjs/bundles/Rx.min.js');
+}
+
+var _commonsNodeNuclideUri;
+
+function _load_commonsNodeNuclideUri() {
+  return _commonsNodeNuclideUri = _interopRequireDefault(require('../../commons-node/nuclideUri'));
+}
+
+var _commonsNodeProcess;
+
+function _load_commonsNodeProcess() {
+  return _commonsNodeProcess = require('../../commons-node/process');
+}
+
+var _commonsNodeNice;
+
+function _load_commonsNodeNice() {
+  return _commonsNodeNice = require('../../commons-node/nice');
+}
+
+var _commonsNodeFsPromise;
+
+function _load_commonsNodeFsPromise() {
+  return _commonsNodeFsPromise = _interopRequireDefault(require('../../commons-node/fsPromise'));
+}
+
+var _nuclideHgRpcLibHgRevisionStateHelpers;
+
+function _load_nuclideHgRpcLibHgRevisionStateHelpers() {
+  return _nuclideHgRpcLibHgRevisionStateHelpers = require('../../nuclide-hg-rpc/lib/hg-revision-state-helpers');
+}
+
+var _nuclideHgRpcLibHgRevisionExpressionHelpers;
+
+function _load_nuclideHgRpcLibHgRevisionExpressionHelpers() {
+  return _nuclideHgRpcLibHgRevisionExpressionHelpers = require('../../nuclide-hg-rpc/lib/hg-revision-expression-helpers');
+}
+
+var _nuclideSourceControlHelpers;
+
+function _load_nuclideSourceControlHelpers() {
+  return _nuclideSourceControlHelpers = require('../../nuclide-source-control-helpers');
+}
+
+var _nuclideLogging;
+
+function _load_nuclideLogging() {
+  return _nuclideLogging = require('../../nuclide-logging');
+}
+
+var ARC_CONFIG_FILE_NAME = '.arcconfig';
+
+var arcConfigDirectoryMap = new Map();
+var arcProjectMap = new Map();
+
+function _callArcDiff(filePath, extraArcDiffArgs) {
+  var args = ['diff', '--json'].concat(extraArcDiffArgs);
+
+  return (_rxjsBundlesRxMinJs || _load_rxjsBundlesRxMinJs()).Observable.fromPromise(getCommitBasedArcConfigDirectory(filePath)).flatMap(function (arcConfigDir) {
+    if (arcConfigDir == null) {
+      throw new Error('Failed to find Arcanist config.  Is this project set up for Arcanist?');
+    }
+    var options = {
+      cwd: arcConfigDir
+    };
+    return (0, (_commonsNodeProcess || _load_commonsNodeProcess()).scriptSafeSpawnAndObserveOutput)('arc', args, options);
+  }).share();
+}
+
+function getArcDiffParams(lintExcuse) {
+  var isPrepareMode = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+
+  var args = [];
+  if (isPrepareMode) {
+    args.push('--prepare');
+  }
+
+  if (lintExcuse != null) {
+    args.push('--nolint', '--excuse', lintExcuse);
+  }
+
+  return args;
+}
+
+function createPhabricatorRevision(filePath, isPrepareMode, lintExcuse) {
+  var args = ['--verbatim'].concat(_toConsumableArray(getArcDiffParams(lintExcuse, isPrepareMode)));
+  return _callArcDiff(filePath, args).publish();
+}
+
+function updatePhabricatorRevision(filePath, message, allowUntracked, lintExcuse) {
+  var args = ['-m', message].concat(_toConsumableArray(getArcDiffParams(lintExcuse)));
+  if (allowUntracked) {
+    args.push('--allow-untracked');
+  }
+  return _callArcDiff(filePath, args).publish();
+}
+
+function execArcPull(cwd, fetchLatest, allowDirtyChanges) {
+  var args = ['pull'];
+  if (fetchLatest) {
+    args.push('--latest');
+  }
+
+  if (allowDirtyChanges) {
+    args.push('--allow-dirty');
+  }
+
+  var options = { cwd: cwd };
+  return (0, (_commonsNodeProcess || _load_commonsNodeProcess()).observeProcess)(function () {
+    return (0, (_commonsNodeProcess || _load_commonsNodeProcess()).safeSpawn)('arc', args, options);
+  }).publish();
+}
+
+function execArcLand(cwd) {
+  var args = ['land'];
+  var options = { cwd: cwd };
+  return (0, (_commonsNodeProcess || _load_commonsNodeProcess()).observeProcess)(function () {
+    return (0, (_commonsNodeProcess || _load_commonsNodeProcess()).safeSpawn)('arc', args, options);
+  }).publish();
+}
+
+function execArcPatch(cwd, differentialRevision) {
+  var args = ['patch', differentialRevision];
+  var options = { cwd: cwd };
+  return (0, (_commonsNodeProcess || _load_commonsNodeProcess()).observeProcess)(function () {
+    return (0, (_commonsNodeProcess || _load_commonsNodeProcess()).safeSpawn)('arc', args, options);
+  }).publish();
+}
+
+function convertLints(pathToFile, lints) {
+  return lints.map(function (lint) {
+    // Choose an appropriate level based on lint['severity'].
+    var severity = lint.severity;
+    var level = severity === 'error' ? 'Error' : 'Warning';
+
+    var line = lint.line;
+    // Sometimes the linter puts in global errors on line 0, which will result
+    // in a negative index. We offset those back to the first line.
+    var col = Math.max(0, lint.char - 1);
+    var row = Math.max(0, line - 1);
+
+    var diagnostic = {
+      type: level,
+      text: lint.description,
+      filePath: pathToFile,
+      row: row,
+      col: col,
+      code: lint.code
+    };
+    if (lint.original != null) {
+      diagnostic.original = lint.original;
+    }
+    if (lint.replacement != null) {
+      diagnostic.replacement = lint.replacement;
+    }
+    return diagnostic;
+  });
+}
+
+var __TEST__ = {
+  arcConfigDirectoryMap: arcConfigDirectoryMap,
+  arcProjectMap: arcProjectMap,
+  reset: function reset() {
+    arcConfigDirectoryMap.clear();
+    arcProjectMap.clear();
+  }
+};
+exports.__TEST__ = __TEST__;
+
+// For autofix

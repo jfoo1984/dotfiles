@@ -57,5 +57,4 @@ if [[ "$unamestr" != 'Linux' ]]; then
 fi
 
 # to make brew doctor happy
-
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/Users/jfu/bin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin
