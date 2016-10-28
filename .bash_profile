@@ -11,6 +11,7 @@ function cd() {
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
+# ~/.apitokens can be used for takens you don't want to commit
 for file in ~/.{extra,bash_prompt,exports,aliases,functions,apitokens,om_aliases}; do
   [ -r "$file" ] && source "$file"
 done
