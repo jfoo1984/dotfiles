@@ -31,7 +31,11 @@ ln -s ~/dotfiles/Sublime/Packages/User/ User
 ```
 
 ## atom
-Coming soon...
+Synced via plug-in [sync-settings](http://atom.io/packages/sync-settings)
+
+## code
+VS code settings and extensions synced via plug-in [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+
 
 ## Font
 * [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
