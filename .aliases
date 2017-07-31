@@ -88,5 +88,6 @@ alias be="bundle exec"
 
 # node
 alias guc="npx gulp clean"
+alias gul="npx gulp"
 alias gud="npx gulp deploy"
-alias gucd="guc && gud"
+alias gucg="guc && gul"
