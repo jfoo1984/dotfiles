@@ -5,6 +5,8 @@ alias .....="cd ../../../.."
 
 alias sudo='sudo '
 
+alias sbp='source ~/.bash_profile'
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
   colorflag="--color"
@@ -71,8 +73,14 @@ alias hk="heroku"
 # ruby
 alias be="bundle exec"
 
-# node
+# npm
+alias ni="npm i"
+alias ncv="npm cache verify"
+alias nt="npm test"
+
+# gulp
 alias guc="npx gulp clean"
 alias gul="npx gulp"
 alias gud="npx gulp deploy"
 alias gucg="guc && gul"
+alias gso="npx gulp spec-only"
