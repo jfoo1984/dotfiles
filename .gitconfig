@@ -1,9 +1,9 @@
 [alias]
   st = status
-  ci = commit
+  cm = commit
   br = branch
   co = checkout
-  df = diff --color --color-words --abbrev
+  df = diff --color --abbrev
   dc = diff --cached
   lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
