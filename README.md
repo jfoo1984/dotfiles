@@ -9,6 +9,12 @@ Fork, then update the following with your personal directories/usernames/URLs:
 ```
     git clone git@github.com:jfoo1984/dotfiles.git && cd dotfiles && ./sync.sh
 ```
+## Homebrew
+### Brewfile
+```
+brew tap homebrew/bundle
+brew bundle
+```
 
 ## .vim 
 Vundle is used to manage vim plugins.  To set that up, first checkout Vundle into the appropriate place
