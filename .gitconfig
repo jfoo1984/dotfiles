@@ -9,7 +9,9 @@
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls = ls-files
-  
+  sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+  sapply = "!f() { git stash apply stash^{/$*}; }; f"  
+
   # truncated single-line git log of the last 10 commits
   recent = log --oneline -10
   # Show files ignored by git:
