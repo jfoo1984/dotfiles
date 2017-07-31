@@ -17,12 +17,11 @@ for file in ~/.{extra,bash_prompt,exports,aliases,functions,apitokens,om_aliases
 done
 unset file
 
+# Load nodenv
+eval "$(nodenv init -)"
+
 # ruby version manager
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-# node version manager
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 unamestr=`uname`
 if [[ "$unamestr" != 'Linux' ]]; then
