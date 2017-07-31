@@ -82,3 +82,11 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+
 
 # heroku
 alias hk="heroku"
+
+# ruby
+alias be="bundle exec"
+
+# node
+alias guc="npx gulp clean"
+alias gud="npx gulp deploy"
+alias gucd="guc && gud"
