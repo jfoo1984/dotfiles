@@ -36,9 +36,6 @@ cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 ln -s ~/dotfiles/Sublime/Packages/User/ User
 ```
 
-## atom
-Synced via plug-in [sync-settings](http://atom.io/packages/sync-settings)
-
 ## code
 VS code settings and extensions synced via plug-in [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 
