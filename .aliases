@@ -72,6 +72,8 @@ alias hk="heroku"
 
 # ruby
 alias be="bundle exec"
+alias bi="bundle install"
+alias rdbm="rails db:migrate"
 
 # npm
 alias ni="npm i"
