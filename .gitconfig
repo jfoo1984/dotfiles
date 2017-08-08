@@ -9,6 +9,7 @@
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls = ls-files
+  mr = merge
   sshow = "!f() { git stash show stash^{/$*} -p; }; f"
   sapply = "!f() { git stash apply stash^{/$*}; }; f"  
 
