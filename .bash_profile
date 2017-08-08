@@ -1,13 +1,13 @@
 # override cd to execute custom stuff when called
-function cd() {
-  builtin cd "$1"
-  if [ -a ".nvmrc" ]; then
-    nvm use
-    if [ $? -eq 1 ]; then
-      nvm install && nvm use
-    fi
-  fi
-}
+# function cd() {
+#   builtin cd "$1"
+#   if [ -a ".nvmrc" ]; then
+#     nvm use
+#     if [ $? -eq 1 ]; then
+#       nvm install && nvm use
+#     fi
+#   fi
+# }
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
@@ -19,9 +19,6 @@ unset file
 
 # Load nodenv
 eval "$(nodenv init -)"
-
-# ruby version manager
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 unamestr=`uname`
 if [[ "$unamestr" != 'Linux' ]]; then
@@ -56,5 +53,11 @@ if [[ "$unamestr" != 'Linux' ]]; then
     eval "$(thefuck --alias)"
 fi
 
-# to make brew doctor happy
+# rvm
+## Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# brew doctor
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
