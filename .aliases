@@ -75,6 +75,7 @@ alias hk="heroku"
 alias be="bundle exec"
 alias bi="bundle install"
 alias rdbm="rails db:migrate"
+alias rc="rails console"
 
 # npm
 alias ni="npm i"
@@ -85,8 +86,17 @@ alias nt="npm test"
 alias guc="npx gulp clean"
 alias gul="npx gulp"
 alias gud="npx gulp deploy"
+alias gudf="npx gulp deploy --env=fuji"
 alias gucg="guc && gul"
 alias gso="npx gulp spec-only"
 
 # git branch Shortcuts
 alias mfuji="gco integration/fuji && gmr -"
+
+# beans
+alias bd="beans deploy"
+alias bdf="bd -a onelife-fuji"
+alias bx="beans exec"
+alias bxf="bx -a onelife-fuji"
+alias bxrc="bx rails console --interactive -i ~/.ssh/1life-core.pem"
+alias bxrcf="bxrc -a onelife-fuji"
