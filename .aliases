@@ -47,6 +47,7 @@ alias gf='git fetch'
 alias gl='git pull'
 alias gp='git push'
 alias gco='git co'
+alias gcom='git co master'
 alias gmr='git mr'
 alias git-cleanup='. ~/git-cleanup.sh'
 
@@ -88,7 +89,8 @@ alias gul="npx gulp"
 alias gud="npx gulp deploy"
 alias gudf="npx gulp deploy --env=fuji"
 alias gucg="guc && gul"
-alias gso="npx gulp spec-only"
+alias guso="npx gulp spec-only"
+alias gusp="npx gulp spec"
 
 # git branch Shortcuts
 alias mfuji="gco integration/fuji && gmr -"
