@@ -61,4 +61,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
 
 # add qt 5.5 to path, needed for capybara
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+export PATH="$PATH:$(brew --prefix qt@5.5)/bin"
