@@ -38,17 +38,17 @@ alias o="open ."
 alias c="code"
 
 # git
-alias ga='git add'
-alias gb='git br'
-alias gdf='git df'
-alias gst='git st'
-alias gcm='git cm'
-alias gf='git fetch'
-alias gl='git pull'
-alias gp='git push'
-alias gco='git co'
-alias gcom='git co master'
-alias gmr='git mr'
+alias ga='g add'
+alias gb='g br'
+alias gdf='g df'
+alias gst='g st'
+alias gcm='g cm'
+alias gf='g fetch'
+alias gl='g pull'
+alias gp='g push'
+alias gco='g co'
+alias gcom='g co master'
+alias gmr='g mr'
 alias git-cleanup='. ~/git-cleanup.sh'
 
 # Recursively delete `.DS_Store` files
@@ -82,6 +82,12 @@ alias rc="rails console"
 alias ni="npm i"
 alias ncv="npm cache verify"
 alias nt="npm test"
+
+# One Medical stuff
+# directories
+alias ol="cd ~/onelife"
+alias ui="cd ~/onelife-ui"
+alias snippets="cd ~/onelife-templates"
 
 # gulp
 alias guc="npx gulp clean"
