@@ -92,6 +92,7 @@ alias snippets="cd ~/onelife-templates"
 # gulp
 alias guc="npx gulp clean"
 alias gul="npx gulp"
+alias gub="npx gulp build"
 alias gud="npx gulp deploy"
 alias gudf="npx gulp deploy --env=fuji"
 alias gucg="guc && gul"
