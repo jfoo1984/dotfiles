@@ -82,30 +82,3 @@ alias rc="rails console"
 alias ni="npm i"
 alias ncv="npm cache verify"
 alias nt="npm test"
-
-# One Medical stuff
-# directories
-alias ol="cd ~/onelife"
-alias ui="cd ~/onelife-ui"
-alias snippets="cd ~/onelife-templates"
-
-# gulp
-alias guc="npx gulp clean"
-alias gul="npx gulp"
-alias gub="npx gulp build"
-alias gud="npx gulp deploy"
-alias gudf="npx gulp deploy --env=fuji"
-alias gucg="guc && gul"
-alias guso="npx gulp spec-only"
-alias gusp="npx gulp spec"
-
-# git branch Shortcuts
-alias mfuji="gco integration/fuji && gmr -"
-
-# beans
-alias bd="beans deploy"
-alias bdf="bd -a onelife-fuji"
-alias bx="beans exec"
-alias bxf="bx -a onelife-fuji"
-alias bxrc="bx rails console --interactive -i ~/.ssh/1life-core.pem"
-alias bxrcf="bxrc -a onelife-fuji"
