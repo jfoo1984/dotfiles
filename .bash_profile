@@ -51,6 +51,9 @@ if [[ "$unamestr" != 'Linux' ]]; then
     eval "$(thefuck --alias)"
 fi
 
+# elasticsearch
+export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
+
 # rvm
 ## Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

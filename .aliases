@@ -77,6 +77,8 @@ alias be="bundle exec"
 alias bi="bundle install"
 alias rdbm="rails db:migrate"
 alias rc="rails console"
+alias zs="zeus start"
+alias zr="zeus test"
 
 # npm
 alias ni="npm i"
