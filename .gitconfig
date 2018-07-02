@@ -11,12 +11,23 @@
   ls = ls-files
   mr = merge
   sshow = "!f() { git stash show stash^{/$*} -p; }; f"
-  sapply = "!f() { git stash apply stash^{/$*}; }; f"  
+  sapply = "!f() { git stash apply stash^{/$*}; }; f"
+  ignored = !git ls-files -v | grep "^[[:lower:]]"
 
   # truncated single-line git log of the last 10 commits
   recent = log --oneline -10
   # Show files ignored by git:
   ign = ls-files -o -i --exclude-standard
+
+  # Get the current branch name (not so useful in itself, but used in
+  # other aliases)
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+
+  # Push the current branch to the remote "origin", and set it to track
+  # the upstream branch
+  pob = "!git push -u origin $(git branch-name)"
+
+
 
 [help]
   autocorrect = 1
@@ -62,7 +73,7 @@
 # http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
 [url "git@github.com:jfoo1984/"]
   insteadOf = "git://github.com/jfoo1984/"
-  
+
 [push]
   default = tracking
 [diff]
@@ -74,7 +85,7 @@
 
 [credential]
   helper = osxkeychain
-	
+
 [filter "media"]
   required = true
   clean = git media clean %f

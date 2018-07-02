@@ -44,11 +44,16 @@ alias gdf='g df'
 alias gst='g st'
 alias gcm='g cm'
 alias gf='g fetch'
+alias gfo='g fetch origin'
 alias gl='g pull'
 alias gp='g push'
+alias gpf='g push -f'
+alias gpfn='gpf --no-verify'
+alias gpob='g pob'
 alias gco='g co'
 alias gcom='g co master'
 alias gmr='g mr'
+alias grbm='g rebase --preserve-merges origin/master'
 alias git-cleanup='. ~/git-cleanup.sh'
 
 # Recursively delete `.DS_Store` files
@@ -75,12 +80,26 @@ alias hk="heroku"
 # rails
 alias be="bundle exec"
 alias bi="bundle install"
-alias rdbm="rails db:migrate"
+alias bidock="docker-compose run onelife bundle install"
+alias rdbm="docker-compose run onelife rails db:migrate RAILS_ENV=development"
+
 alias rc="rails console"
-alias zs="zeus start"
+alias zst="zeus start"
+alias zs="zeus s"
 alias zr="zeus test"
 
 # npm
 alias ni="npm i"
 alias ncv="npm cache verify"
 alias nt="npm test"
+
+# chrome
+alias crd="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222"
+
+# docker
+alias dcr="docker-compose run"
+alias debi='docker exec $(docker ps | grep "onelife_onelife_1" | awk "{print $1;}") bundle install'
+alias derdbm='docker exec $(docker ps | grep "onelife_onelife_1" | awk "{print $1;}") rails db:migrate RAILS_ENV=development'
+
+# docker-sync
+alias dss2="docker-sync stop && docker-sync start"

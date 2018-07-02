@@ -1,18 +1,19 @@
-# override cd to execute custom stuff when called
-# function cd() {
-#   builtin cd "$1"
-#   if [ -a ".nvmrc" ]; then
-#     nvm use
-#     if [ $? -eq 1 ]; then
-#       nvm install && nvm use
-#     fi
-#   fi
-# }
+# iTerm2 tab titles
+function title {
+    if [ "$1" ]
+    then
+        export PROMPT_COMMAND='iterm2_preexec_invoke_cmd'
+        echo -ne "\033]0;${*}\007"
+    else
+        export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007";iterm2_preexec_invoke_cmd'
+    fi
+}
+
 
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
 # ~/.apitokens can be used for takens you don't want to commit
-for file in ~/.{extra,bash_prompt,exports,aliases,functions,apitokens,om_aliases}; do
+for file in ~/shell_scripts/{apitokens,aliases,bash_prompt,exports,extra,functions,iterm2_config}.sh; do
   [ -r "$file" ] && source "$file"
 done
 unset file
@@ -43,9 +44,6 @@ complete -W "NSGlobalDomain" defaults
 # No Ruby installed
 # eval "$(rbenv init -)"
 
-# Docker 
-$(boot2docker shellinit 2> /dev/null)
-
 # thefuck
 if [[ "$unamestr" != 'Linux' ]]; then
     eval "$(thefuck --alias)"
@@ -54,11 +52,9 @@ fi
 # elasticsearch
 export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
 
-# rvm
-## Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # brew doctor
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
