@@ -5,7 +5,8 @@ Fork, then update the following with your personal directories/usernames/URLs:
 * .bashrc (home path)
 * .bash_prompt
 * .gitconfig
-* If desired, create .apitokens for tokens that you don't want commited to git
+* (optional) create `~/shell_scripts/apitokens.sh for tokens that you do not want committed to git
+* (optional) create .~/shell_scripts/extras.sh for aliases that you do not want committed to git
 ```
     git clone git@github.com:jfoo1984/dotfiles.git && cd dotfiles && ./sync.sh
 ```
