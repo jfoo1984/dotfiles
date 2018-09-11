@@ -13,7 +13,7 @@ function title {
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
 # ~/.apitokens can be used for takens you don't want to commit
-for file in ~/shell_scripts/{apitokens,aliases,bash_prompt,exports,extra,functions,iterm2_config}.sh; do
+for file in ~/shell_scripts/{apitokens,aliases,bash_prompt,exports,extras,functions,iterm2_config}.sh; do
   [ -r "$file" ] && source "$file"
 done
 unset file
