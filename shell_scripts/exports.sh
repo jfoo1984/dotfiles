@@ -9,3 +9,6 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
+
+# add support for ctrl+o to open selected file in VS Code with fzf
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"

@@ -105,3 +105,15 @@ alias derdbm='docker exec $(docker ps | grep "onelife_onelife_1" | awk "{print $
 
 # docker-sync
 alias dss2="docker-sync stop && docker-sync start"
+
+# prettyping
+alias ping='prettyping --nolegend'
+
+# fzf open files
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+
+# top
+alias top="sudo htop"
+
+# ncdu - replace du
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
