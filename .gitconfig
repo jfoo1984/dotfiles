@@ -1,6 +1,7 @@
 [alias]
   st = status
   cm = commit
+  cmnv = commit --no-verify
   br = branch
   co = checkout
   df = diff --color --abbrev

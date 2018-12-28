@@ -45,6 +45,7 @@ alias gb='g br'
 alias gdf='g df'
 alias gst='g st'
 alias gcm='g cm'
+alias gcmnv='g cmnv'
 alias gf='g fetch'
 alias gfo='g fetch origin'
 alias gl='g pull'
@@ -117,3 +118,6 @@ alias top="sudo htop"
 
 # ncdu - replace du
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+
+# misc
+alias gcopl="gco -- package-lock.json"
