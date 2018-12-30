@@ -43,6 +43,7 @@ alias c="code"
 alias ga='g add'
 alias gb='g br'
 alias gdf='g df'
+alias gdfc='g dfc'
 alias gst='g st'
 alias gcm='g cm'
 alias gcmnv='g cmnv'
@@ -58,6 +59,7 @@ alias gcom='g co master'
 alias gmr='g mr'
 alias grbm='g rebase --preserve-merges origin/master'
 alias git-cleanup='. ~/git-cleanup.sh'
+alias gpob='g publish'
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
