@@ -59,5 +59,5 @@ source /usr/local/share/chruby/auto.sh
 # brew doctor
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
 
-# add qt 5.5 to path, needed for capybara
-export PATH="$PATH:$(brew --prefix qt@5.5)/bin"
+# add qt to path, needed for capybara
+export PATH="$PATH:$(brew --prefix qt)/bin"
