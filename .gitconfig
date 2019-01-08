@@ -90,6 +90,7 @@
   enabled = true
 [user]
   name = Jerry Fu
+  email = jerry.fu@gmail.com
 
 [credential]
   helper = osxkeychain

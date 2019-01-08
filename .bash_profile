@@ -10,8 +10,8 @@ function title {
 }
 
 
-# Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
-# ~/.extra can be used for settings you don’t want to commit
+# Load ~/shell_script/[.extras,.bash_prompt,.exports,.aliases,~/.functions]
+# ~/.extras can be used for settings you don’t want to commit
 # ~/.apitokens can be used for takens you don't want to commit
 for file in ~/shell_scripts/{apitokens,aliases,bash_prompt,exports,extras,functions,iterm2_config}.sh; do
   [ -r "$file" ] && source "$file"
@@ -55,6 +55,7 @@ export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
 # chruby
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
+chruby ruby-2.6.0
 
 # brew doctor
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
