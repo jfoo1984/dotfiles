@@ -55,7 +55,6 @@ export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
 # chruby
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
-chruby ruby-2.6.0
 
 # brew doctor
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
