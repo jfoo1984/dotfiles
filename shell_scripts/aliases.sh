@@ -53,13 +53,12 @@ alias gl='g pull'
 alias gp='g push'
 alias gpf='g push -f'
 alias gpfn='gpf --no-verify'
-alias gpob='g pob'
 alias gco='g co'
 alias gcom='g co master'
 alias gmr='g mr'
 alias grbm='g rebase --preserve-merges origin/master'
 alias git-cleanup='. ~/git-cleanup.sh'
-alias gpob='g publish'
+alias gpub='g publish'
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
@@ -92,6 +91,10 @@ alias rc="rails console"
 alias zst="zeus start"
 alias zs="zeus s"
 alias zr="zeus test"
+
+# node
+alias upgradenodenv="brew upgrade nodenv node-build"
+alias listnodeversions="nodenv install -l"
 
 # npm
 alias ni="npm i"
