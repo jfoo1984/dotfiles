@@ -9,6 +9,20 @@ function title {
     fi
 }
 
+# thefuck
+if [[ "$unamestr" != 'Linux' ]]; then
+    eval "$(thefuck --alias)"
+fi
+
+# chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+# brew doctor
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+
+# add qt to path, needed for capybara
+export PATH="$PATH:$(brew --prefix qt)/bin"
 
 # Load ~/shell_script/[.extras,.bash_prompt,.exports,.aliases,~/.functions]
 # ~/.extras can be used for settings you don’t want to commit
@@ -41,23 +55,20 @@ export LANG="en_US"
 # Add tab completion for `defaults read|write NSGlobalDomain`
 # You could just use `-g` instead, but I like being explicit
 complete -W "NSGlobalDomain" defaults
-# No Ruby installed
-# eval "$(rbenv init -)"
 
-# thefuck
-if [[ "$unamestr" != 'Linux' ]]; then
-    eval "$(thefuck --alias)"
+# added by Miniconda3 4.5.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '~/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "~/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "~/miniconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="~/miniconda3/bin:$PATH"
+    fi
 fi
-
-# elasticsearch
-export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
-
-# chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
-# brew doctor
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin
-
-# add qt to path, needed for capybara
-export PATH="$PATH:$(brew --prefix qt)/bin"
+unset __conda_setup
+# <<< conda init <<<
