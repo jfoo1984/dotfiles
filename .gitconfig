@@ -48,7 +48,7 @@
   attributesfile = ~/.gitattributes
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
   autocrlf = false
-  editor = vim
+  editor = nvim
 [color "branch"]
   current = yellow reverse
   local = yellow
