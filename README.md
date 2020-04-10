@@ -19,7 +19,7 @@ brew bundle
 ```
 For more info, visit the [homebrew-bundle page](https://github.com/Homebrew/homebrew-bundle).
 
-## .vim
+## nvim
 
 With python3 installed, install nvim python3 interface for nvim
 ```
@@ -31,13 +31,6 @@ Install [`dein.vim` plugin manager](https://github.com/Shougo/dein.vim)
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 # For example, we just use `~/.cache/dein` as installation directory
 sh ./installer.sh ~/.cache/dein
-```
-
-## sublimetext
-Sublime settings and packages are usually stored in `~/Library/Application Support/Sublime Text 3/Packages/User/`.  The contents of that directory have been moved into this dotfiles folder, and can be used to configure Sublime by creating a symlink
-```
-cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
-ln -s ~/dotfiles/Sublime/Packages/User/ User
 ```
 
 ## code
