@@ -59,6 +59,9 @@ if dein#load_state('/Users/jfu/.cache/dein')
   " vim-fugitive
   call dein#add('tpope/vim-fugitive')
 
+  " vim-rhubarb
+  call dein#add('tpope/vim-rhubarb')
+
   " === UI === "
   " vim-solarized8_flat - Solarized color scheme
   call dein#add('lifepillar/vim-solarized8')

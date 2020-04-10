@@ -241,6 +241,29 @@ set winbl=10
 " ===                      CUSTOM COLORSCHEME CHANGES                      === "
 " ============================================================================ "
 
+" Add custom highlights in method that is executed every time a colorscheme is sourced
+" See https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f for details
+function! TrailingSpaceHighlights() abort
+  " Hightlight trailing whitespace
+  highlight Trail ctermbg=red guibg=red
+  call matchadd('Trail', '\s\+$', 100)
+endfunction
+
+autocmd! ColorScheme * call TrailingSpaceHighlights()
+
+" Call method on window enter
+augroup WindowManagement
+  autocmd!
+  autocmd WinEnter * call Handle_Win_Enter()
+augroup END
+
+" Change highlight group of preview window when open
+function! Handle_Win_Enter()
+  if &previewwindow
+    setlocal winhighlight=Normal:MarkdownError
+  endif
+endfunction
+
 " Editor theme
 set background=dark
 try
@@ -404,6 +427,7 @@ if has('persistent_undo')
   set undolevels=3000
   set undoreload=10000
 endif
+
 set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
 set backup
 set noswapfile
@@ -412,3 +436,5 @@ set noswapfile
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
+
+set updatetime=300
