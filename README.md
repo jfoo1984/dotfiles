@@ -12,14 +12,14 @@ Fork, then update the following with your personal directories/usernames/URLs:
 ```
 
 ## Homebrew
-### Brewfile
+### Brewfile - automated installation of homebrew packages
 ```
 brew tap homebrew/bundle
 brew bundle
 ```
 For more info, visit the [homebrew-bundle page](https://github.com/Homebrew/homebrew-bundle).
 
-## nvim
+## neovim setup
 
 With python3 installed, install nvim python3 interface for nvim
 ```
@@ -33,7 +33,7 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 sh ./installer.sh ~/.cache/dein
 ```
 
-## code
+## vscode setup
 VS code settings and extensions synced via plug-in [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 
 
