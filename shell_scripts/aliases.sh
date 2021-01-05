@@ -51,14 +51,17 @@ alias gf='g fetch'
 alias gfo='g fetch origin'
 alias gl='g pull'
 alias gp='g push'
-alias gpf='g push -f'
+alias gpf='gp -f'
+alias gpn='gp --no-verify'
 alias gpfn='gpf --no-verify'
 alias gco='g co'
 alias gcom='g co master'
 alias gmr='g mr'
-alias grbm='g rebase --preserve-merges origin/master'
+alias grbm='g fetch origin && g rb --preserve-merges origin/master'
+alias grbmain='g fetch origin && g rb --preserve-merges origin/main'
 alias git-cleanup='. ~/git-cleanup.sh'
 alias gpub='g publish'
+alias gpubf='g publish -f'
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
@@ -84,16 +87,14 @@ alias hk="heroku"
 # rails
 alias be="bundle exec"
 alias bi="bundle install"
-alias bidock="docker-compose run onelife bundle install"
-alias rdbm="docker-compose run onelife rails db:migrate RAILS_ENV=development"
-
+alias dcebi="docker-compose exec onelife bundle install"
 alias rc="rails console"
 alias zst="zeus start"
 alias zs="zeus s"
 alias zr="zeus test"
 
 # node
-alias upgradenodenv="brew upgrade nodenv node-build"
+alias upgradenodenv="brew update && brew upgrade nodenv node-build"
 alias listnodeversions="nodenv install -l"
 
 # npm
