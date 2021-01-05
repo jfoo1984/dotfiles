@@ -11,6 +11,7 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls = ls-files
   mr = merge
+  rb = rebase
   sshow = "!f() { git stash show stash^{/$*} -p; }; f"
   sapply = "!f() { git stash apply stash^{/$*}; }; f"
   ignored = !git ls-files -v | grep "^[[:lower:]]"
