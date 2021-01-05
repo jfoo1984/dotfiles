@@ -14,7 +14,6 @@ Fork, then update the following with your personal directories/usernames/URLs:
 ## Homebrew
 ### Brewfile - automated installation of homebrew packages
 ```
-brew tap homebrew/bundle
 brew bundle
 ```
 For more info, visit the [homebrew-bundle page](https://github.com/Homebrew/homebrew-bundle).
