@@ -32,9 +32,11 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 sh ./installer.sh ~/.cache/dein
 ```
 
-## vscode setup
-VS code settings and extensions synced via plug-in [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+May need to create nvim backup dir to prevent errors when saving
 
+```
+mkdir ~/.local/share/nvim/backup/
+```
 
 ## Font
 * [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
