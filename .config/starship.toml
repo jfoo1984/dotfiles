@@ -31,8 +31,7 @@ symbol = " "
 symbol = " "
 
 [git_metrics]
-added_style = "bold blue"
-format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+only_nonzero_diffs = true
 disabled = false
 
 [git_status]
