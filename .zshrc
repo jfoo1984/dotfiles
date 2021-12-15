@@ -21,3 +21,14 @@ function set_win_title(){
     echo -ne "\033]0; $(basename "$PWD") \007"
 }
 starship_precmd_user_func="set_win_title"
+
+# search
+ bindkey "\e[5~" history-search-backward
+ bindkey "\e[6~" history-search-forward
+
+# auto cd
+setopt AUTO_CD
+
+# TODO:
+# zsh config: https://scriptingosx.com/2019/06/moving-to-zsh-part-3-shell-options/
+# autocompletion: https://thevaluable.dev/zsh-completion-guide-examples/

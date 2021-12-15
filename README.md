@@ -21,6 +21,10 @@ brew bundle
 
 For more info, visit the [homebrew-bundle page](https://github.com/Homebrew/homebrew-bundle).
 
+## Prompt
+
+The shell prompt is [configured using Starship](https://starship.rs/config/#prompt)
+
 ## neovim setup
 
 With python3 installed, install nvim python3 interface for nvim

@@ -17,7 +17,7 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
 # Load ~/shell_script/[apitokens,prompt,exports,extras,iterm2_config].sh
-for file in ~/shell_scripts/{apitokens,prompt,exports,extras,iterm2_config}.sh; do
+for file in ~/shell_scripts/{apitokens,exports,extras,iterm2_config}.sh; do
   [ -r "$file" ] && source "$file"
 done
 unset file
