@@ -41,7 +41,6 @@ function copy_dot_files_to_home_dir() {
   copy_rsync_command+=(~)
 
   "${copy_rsync_command[@]}"
-  echo -e "\n=== Restart terminal for changes to take effect ==="
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
