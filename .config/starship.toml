@@ -1,0 +1,74 @@
+# ~/.config/starship.toml
+
+command_timeout = 2000
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+
+[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
+threshold = 10
+style = "bold red"
+discharging_symbol = "  "
+
+[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
+threshold = 30
+style = "bold yellow"
+discharging_symbol = "  "
+
+[[battery.display]]  # "bold green" style when capacity is between 30% and 100%
+threshold = 100
+style = "bold green"
+discharging_symbol = "  "
+
+[cmd_duration]
+format = '\[[⏱ $duration ]($style)\]'
+
+[docker_context]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[git_metrics]
+added_style = "bold blue"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+disabled = false
+
+[git_status]
+conflicted = "⚔️ "
+ahead = "🏎️💨 ×${count} "
+behind = "🐢 ×${count} "
+diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count} "
+untracked = "🛤️ × ${count} "
+stashed = "📦 "
+modified = "📝 ×${count} "
+staged = "🗃️ ×${count} "
+renamed = "📛 ×${count} "
+deleted = "🗑️ ×${count} "
+style = "bright-white"
+format = "$all_status$ahead_behind"
+
+[golang]
+symbol = " "
+
+[memory_usage]
+disabled = false
+threshold = 90
+format = "$symbol [${ram}]($style) "
+symbol = ""
+style = "bold dimmed green"
+
+[nodejs]
+format = "[$symbol($version )]($style) "
+symbol = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+format = "[$symbol($version )]($style)"
+symbol = " "

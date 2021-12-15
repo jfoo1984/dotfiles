@@ -29,8 +29,3 @@ function json() {
     python -mjson.tool <<< "$*" | pygmentize -l javascript
   fi
 }
-
-# polyfill ssh-copy-id for osx expects "user@machine"
-function ssh-copy-id() {
-    cat ~/.ssh/id_rsa.pub | ssh "$1" "mkdir ~/.ssh; cat >> ~/.ssh/authorized_keys"
-}
