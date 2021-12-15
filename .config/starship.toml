@@ -17,7 +17,7 @@ style = "bold yellow"
 discharging_symbol = "  "
 
 [[battery.display]]  # "bold green" style when capacity is between 30% and 100%
-threshold = 100
+threshold = 75
 style = "bold green"
 discharging_symbol = "  "
 
