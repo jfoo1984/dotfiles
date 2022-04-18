@@ -30,8 +30,6 @@ export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 
-bundle config --local build.mysql2 "--with-ldflags=-L/usr/local/opt/openssl@3/lib --with-cppflags=-I/usr/local/opt/openssl@3/include"
-
 # Prevent not available on arm64 errors when installing Chromium
 # https://github.com/puppeteer/puppeteer/issues/7740
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
