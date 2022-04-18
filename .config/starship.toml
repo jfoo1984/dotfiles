@@ -2,6 +2,9 @@
 
 command_timeout = 2000
 
+[aws]
+disabled = true
+
 [battery]
 full_symbol = "🔋"
 charging_symbol = "⚡️"
@@ -24,6 +27,10 @@ discharging_symbol = "  "
 [cmd_duration]
 format = '\[[⏱ $duration ]($style)\]'
 
+[directory]
+truncate_to_repo = false
+style = "bold bright-white"
+
 [docker_context]
 symbol = " "
 
@@ -36,17 +43,17 @@ disabled = false
 
 [git_status]
 conflicted = "⚔️ "
-ahead = "🏎️💨 × ${count} "
-behind = "🐢 × ${count} "
-diverged = "🔱 🏎️ 💨 × ${ahead_count} 🐢 × ${behind_count} "
-untracked = "🛤️  × ${count} "
+ahead = "|🏎️💨 × ${count}"
+behind = "|🐢 × ${count}"
+diverged = "|🔱 🏎️💨 × ${ahead_count}|🐢 × ${behind_count}"
+untracked = "|🛤️  × ${count}"
 stashed = "📦 "
-modified = "📝 × ${count} "
-staged = "🗃️  × ${count} "
-renamed = "📛 × ${count} "
-deleted = "🗑️ × ${count} "
-style = "bright-white"
-format = "$all_status$ahead_behind"
+modified = "|📝 × ${count}"
+staged = "|🗃️  × ${count}"
+renamed = "|📛 × ${count}"
+deleted = "|🗑️ × ${count}"
+style = "bg:yellow bright-white"
+format = "[$all_status$ahead_behind|]($style)"
 
 [golang]
 symbol = " "
@@ -59,15 +66,21 @@ symbol = ""
 style = "bold dimmed green"
 
 [nodejs]
-format = "[$symbol($version )]($style) "
+format = "[ $symbol($version)]($style)"
 symbol = " "
 
 [package]
 symbol = " "
 
 [python]
+format = "[ $symbol($version)]($style)"
 symbol = " "
 
 [ruby]
-format = "[$symbol($version )]($style)"
+format = "[ $symbol($version)]($style)"
 symbol = " "
+
+[time]
+disabled = false
+format = '🕙 [$time]($style) '
+time_format = "%a %T"
