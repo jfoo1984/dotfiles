@@ -21,3 +21,18 @@ for file in ~/shell_scripts/{apitokens,exports,extras,iterm2_config}.sh; do
   [ -r "$file" ] && source "$file"
 done
 unset file
+
+# from brew info openssl
+# If you need to have openssl@3 first in your PATH
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+# For compilers to find openssl@3 you may need to set:
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+
+bundle config --local build.mysql2 "--with-ldflags=-L/usr/local/opt/openssl@3/lib --with-cppflags=-I/usr/local/opt/openssl@3/include"
+
+# Prevent not available on arm64 errors when installing Chromium
+# https://github.com/puppeteer/puppeteer/issues/7740
+export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+export PUPPETEER_EXECUTABLE_PATH=`which chromium`
