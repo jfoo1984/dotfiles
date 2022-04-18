@@ -5,20 +5,13 @@ alias .....="cd ../../../.."
 
 alias sudo='sudo '
 
-alias sbp='source ~/.bash_profile'
+alias szsh='source ~/.zshrc && source ~/.zshenv'
 
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-  colorflag="--color"
-else # OS X `ls`
-  colorflag="-G"
-fi
+# List all files
+alias l="ls -l"
 
-# List all files colorized in long format
-alias l="ls -l ${colorflag}"
-
-# List all files colorized in long format, including dot files
-alias ll="ls -la ${colorflag}"
+# List all files
+alias ll="ls -lha"
 
 # List only directories
 alias lsd='ls -l | grep "^d"'
@@ -54,11 +47,14 @@ alias gpfn='gpf --no-verify'
 alias gco='g co'
 alias gcom='g co master'
 alias gmr='g mr'
-alias grbm='g fetch origin && g rb --preserve-merges origin/master'
-alias grbmain='g fetch origin && g rb --preserve-merges origin/main'
+alias gmrm='g fetch origin && g mr origin/main'
+alias grbm='g fetch origin && g rb origin/master'
+alias grbmain='g fetch origin && g rb origin/main'
 alias git-cleanup='. ~/git-cleanup.sh'
 alias gpub='g publish'
 alias gpubf='g publish -f'
+alias grs='g rs'
+alias grss='g rs --staged'
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
@@ -84,7 +80,6 @@ alias hk="heroku"
 # rails
 alias be="bundle exec"
 alias bi="bundle install"
-alias dcebi="docker-compose exec onelife bundle install"
 alias rc="rails console"
 alias zst="zeus start"
 alias zs="zeus s"
@@ -103,9 +98,9 @@ alias nt="npm test"
 alias crd="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222"
 
 # docker
-alias dcr="docker-compose run"
-alias debi='docker exec $(docker ps | grep "onelife_onelife_1" | awk "{print $1;}") bundle install'
-alias derdbm='docker exec $(docker ps | grep "onelife_onelife_1" | awk "{print $1;}") rails db:migrate RAILS_ENV=development'
+alias dcb="docker compose build"
+alias dce="docker compose exec"
+alias dcr="docker compose run"
 
 # docker-sync
 alias dss2="docker-sync stop && docker-sync start"

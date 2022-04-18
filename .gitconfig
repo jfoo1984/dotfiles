@@ -12,7 +12,7 @@
   ls = ls-files
   mr = merge
   rb = rebase
-  rst = restore
+  rs = restore
 
   sshow = "!f() { git stash show stash^{/$*} -p; }; f"
   sapply = "!f() { git stash apply stash^{/$*}; }; f"
