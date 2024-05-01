@@ -1,10 +1,34 @@
-# chruby
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-# enable auto-switching of Rubies specified by .ruby-version files
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+# ohmyzsh .zshrc template https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME=""
+
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  aliases
+  brew
+  bundler
+  chruby
+  git
+  rails
+  ruby
+  docker-compose
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# Set language environment
+export LANG=en_US.UTF-8
 
 # Load ~/shell_script/[aliases,functions]
-for file in ~/shell_scripts/{aliases,functions}.sh; do
+for file in ~/shell_scripts/{aliases,functions,apitokens,exports,extras}.sh; do
   [ -r "$file" ] && source "$file"
 done
 unset file
@@ -21,14 +45,3 @@ function set_win_title(){
     echo -ne "\033]0; $(basename "$PWD") \007"
 }
 starship_precmd_user_func="set_win_title"
-
-# search
- bindkey "\e[5~" history-search-backward
- bindkey "\e[6~" history-search-forward
-
-# auto cd
-setopt AUTO_CD
-
-# TODO:
-# zsh config: https://scriptingosx.com/2019/06/moving-to-zsh-part-3-shell-options/
-# autocompletion: https://thevaluable.dev/zsh-completion-guide-examples/

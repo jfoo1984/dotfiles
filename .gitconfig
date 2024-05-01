@@ -1,19 +1,4 @@
 [alias]
-  st = status
-  cm = commit
-  cmnv = commit --no-verify
-  br = branch
-  co = checkout
-  df = diff --color --abbrev
-  dc = diff --cached
-  lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  ls = ls-files
-  mr = merge
-  rb = rebase
-  rs = restore
-
   sshow = "!f() { git stash show stash^{/$*} -p; }; f"
   sapply = "!f() { git stash apply stash^{/$*}; }; f"
   ignored = !git ls-files -v | grep "^[[:lower:]]"
@@ -22,17 +7,6 @@
   recent = log --oneline -10
   # Show files ignored by git:
   ign = ls-files -o -i --exclude-standard
-
-  # Get the current branch name (not so useful in itself, but used in
-  # other aliases)
-  branch-name = "!git rev-parse --abbrev-ref HEAD"
-
-  # Push the current branch to the remote "origin", and set it to track
-  # the upstream branch
-  publish = "!git push -u origin $(git branch-name)"
-
-  # Delete the remote version of the current branch
-  unpublish = "!git push origin :$(git branch-name)"
 
   # Unstage any files that have been added to the staging area
   unstage = reset HEAD
@@ -93,7 +67,7 @@
   enabled = true
 [user]
   name = Jerry Fu
-  email = jerry.fu@gmail.com
+  email = 2072627+jfoo1984@users.noreply.github.com
 
 [credential]
   helper = osxkeychain

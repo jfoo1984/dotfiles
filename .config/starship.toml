@@ -31,12 +31,6 @@ format = '\[[⏱ $duration ]($style)\]'
 truncate_to_repo = false
 style = "bold bright-white"
 
-[docker_context]
-symbol = " "
-
-[git_branch]
-symbol = " "
-
 [git_metrics]
 only_nonzero_diffs = true
 disabled = false
@@ -53,32 +47,26 @@ staged = "|🗃️  × ${count}"
 renamed = "|📛 × ${count}"
 deleted = "|🗑️ × ${count}"
 style = "bg:yellow bright-white"
-format = "[$all_status$ahead_behind|]($style)"
-
-[golang]
-symbol = " "
+format = "[$all_status$ahead_behind|]($style) "
 
 [memory_usage]
 disabled = false
 threshold = 90
 format = "$symbol [${ram}]($style) "
-symbol = ""
 style = "bold dimmed green"
 
 [nodejs]
-format = "[ $symbol($version)]($style)"
-symbol = " "
+symbol = " "
+format = "[$symbol($version)]($style) "
 
 [package]
-symbol = " "
+format = "[$symbol($version)]($style) "
 
 [python]
-format = "[ $symbol($version)]($style)"
-symbol = " "
+format = "[$symbol($version)]($style) "
 
 [ruby]
-format = "[ $symbol($version)]($style)"
-symbol = " "
+format = "[$symbol($version)]($style) "
 
 [time]
 disabled = false
