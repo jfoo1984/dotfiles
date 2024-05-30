@@ -19,7 +19,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   alias ls="ls -G"
 fi
 
-alias cat='bat'
+alias cat="bat"
 
 # Shortcuts
 alias v="vim"

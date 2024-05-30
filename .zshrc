@@ -22,6 +22,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# terminals maintain their own history until closed
+unsetopt share_history
+
 # User configuration
 
 # Set language environment
