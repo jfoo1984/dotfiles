@@ -3,7 +3,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-alias szsh="source ~/.zshrc"
+alias zshr="omz reload"
+alias omzr="omz reload"
 
 # List all files
 alias l="ls -l"
