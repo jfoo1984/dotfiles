@@ -8,6 +8,9 @@ ZSH_THEME=""
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 
+zstyle ':omz:plugins:eza' 'git-status' yes
+zstyle ':omz:plugins:eza' 'header' yes
+
 # zsh-autosuggestions installation: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 # zsh-history-substring-search: https://github.com/zsh-users/zsh-history-substring-search?tab=readme-ov-file#install
 # zsh-syntax-highlighting: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
@@ -17,7 +20,9 @@ plugins=(
   bundler
   chruby
   docker-compose
+  eza
   fd
+  fzf
   git
   rails
   ruby
@@ -60,19 +65,30 @@ setopt hist_ignore_space
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# fzf
-source <(fzf --zsh)
-
 export ZOXIDE_CMD_OVERRIDE="cd"
 
-# fd - use fzf
-# _fzf_compgen_path() {
-#     fd --hidden --exclude .git . "$1"
-# }
+# use fd for file and folder completion in fzf
+_fzf_compgen_path() {
+    fd --hidden --exclude .git . "$1"
+}
 
-# _fzf_compgen_dir() {
-#     fd --type=d --hidden --exclude .git . "$1"
-# }
+_fzf_compgen_dir() {
+    fd --type=d --hidden --exclude .git . "$1"
+}
+
+# show directory tree or file preview when searching with fzf
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}" "$@" ;;
+    ssh) fzf --preview 'dig {}' "$@" ;;
+    cat|bat) fzf --preview 'bat -n --color=always {}' "$@" ;;
+    *) fzf --preview '$HOME/shell_scripts/fzf-preview.sh {}' "$@" ;;
+  esac
+ }
 
 # Load ~/shell_script/[aliases,functions]
 for file in ~/shell_scripts/{aliases,functions,apitokens,exports,extras}.sh; do
