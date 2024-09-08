@@ -23,8 +23,10 @@ plugins=(
   eza
   fzf
   git
+  nodenv
   rails
   ruby
+  starship
   zoxide
   zsh-autosuggestions
   zsh-history-substring-search
@@ -94,12 +96,6 @@ for file in ~/shell_scripts/{aliases,functions,apitokens,exports,extras}.sh; do
   [ -r "$file" ] && source "$file"
 done
 unset file
-
-# Load nodenv
-eval "$(nodenv init -)"
-
-# Starship - prompt config
-eval "$(starship init zsh)"
 
 # Set terminal tab title to current directory
 # https://starship.rs/advanced-config/#change-window-title
