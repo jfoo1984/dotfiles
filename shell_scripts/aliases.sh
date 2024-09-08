@@ -51,3 +51,7 @@ alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
 # misc
 alias gcopl="gco -- package-lock.json"
+
+# codecrafters
+alias cct="codecrafters test"
+alias ccs="codecrafters submit"
