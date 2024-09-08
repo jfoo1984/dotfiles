@@ -21,7 +21,6 @@ plugins=(
   chruby
   docker-compose
   eza
-  fd
   fzf
   git
   nodenv
