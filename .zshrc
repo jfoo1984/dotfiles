@@ -1,3 +1,8 @@
+# autoenv
+export AUTOENV_ENABLE_LEAVE="true"
+export AUTOENV_ENV_FILENAME=".autoenv"
+export AUTOENV_ENV_LEAVE_FILENAME=".autoenv.leave"
+
 # ohmyzsh .zshrc template https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -15,15 +20,17 @@ zstyle ':omz:plugins:eza' 'header' yes
 # zsh-history-substring-search: https://github.com/zsh-users/zsh-history-substring-search?tab=readme-ov-file#install
 # zsh-syntax-highlighting: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 plugins=(
-  aliases
   brew
+  aliases
+  asdf
   bundler
   chruby
   docker-compose
   eza
   fzf
   git
-  nodenv
+  # nodenv
+  python
   rails
   ruby
   starship
@@ -31,9 +38,17 @@ plugins=(
   zsh-autosuggestions
   zsh-history-substring-search
   zsh-syntax-highlighting
+  zsh-vi-mode
+  virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# virtualenvwrapper
+source ~/shell_scripts/python/virtualenvwrapper_setup.sh
+
+# autoenv
+source $(brew --prefix autoenv)/activate.sh
 
 # Set language environment
 export LANG=en_US.UTF-8
