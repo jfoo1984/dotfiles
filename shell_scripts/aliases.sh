@@ -10,7 +10,6 @@ alias omzr="omz reload"
 alias cat="bat"
 
 # Shortcuts
-alias v="vim"
 alias o="open ."
 alias c="code"
 
