@@ -74,4 +74,8 @@ mkdir ~/.local/share/nvim/backup/
 
 * [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 
-Inspired by [Paul Irish](https://github.com/paulirish/dotfiles), [Mathias Bynens](https://github.com/mathiasbynens/dotfiles/), [Ben Alman](https://github.com/cowboy/dotfiles), and [Max Beatty](https://github.com/maxbeatty/dotfiles)
+## asdf
+
+### Using yarn
+
+Yarn 2.X and greater is installed per project.  After installing yarn with `corepack enable`, it may be necessary to run `asdf reshim nodejs` to make the yarn executable available.
