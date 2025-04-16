@@ -29,6 +29,7 @@ alias gpn='gp --no-verify'
 alias gpfn='gpf --no-verify'
 alias gmr='gm'
 alias gcopl="gco -- package-lock.json"
+alias gcot="gco --theirs"
 
 # File size
 alias fs="stat -f \"%z bytes\""
