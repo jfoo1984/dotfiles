@@ -28,7 +28,7 @@ EOF
 
 # Create the .env.leave file with the deactivate command
 cat <<EOF > $AUTOENV_ENV_LEAVE_FILENAME
-echo "Deactivating virtualenv vc-litqa-agent"
+echo "Deactivating virtualenv $project_dir"
 if type deactivate >/dev/null 2>&1; then
     deactivate
 else
