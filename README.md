@@ -48,28 +48,6 @@ plugins+=(zsh-vi-mode)
 
 The shell prompt is [configured using Starship](https://starship.rs/config/#prompt)
 
-## neovim setup
-
-With python3 installed, install nvim python3 interface for nvim
-
-```sh
-pip3 install --user pynvim
-```
-
-Install [`dein.vim` plugin manager](https://github.com/Shougo/dein.vim)
-
-```sh
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-# For example, we just use `~/.cache/dein` as installation directory
-sh ./installer.sh ~/.cache/dein
-```
-
-May need to create nvim backup dir to prevent errors when saving
-
-```sh
-mkdir ~/.local/share/nvim/backup/
-```
-
 ## Font
 
 * [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
