@@ -37,6 +37,7 @@ plugins=(
   zoxide
   zsh-autosuggestions
   zsh-history-substring-search
+  zsh-interactive-cd
   zsh-syntax-highlighting
   zsh-vi-mode
   virtualenv

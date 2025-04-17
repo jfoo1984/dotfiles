@@ -2,7 +2,7 @@
 
 ## Overview
 
-My config and settings files for OS X
+My config and settings files for MacOS
 
 * (optional) create `~/shell_scripts/apitokens.sh for tokens that you do not want committed to git
 * (optional) create .~/shell_scripts/extras.sh for aliases that you do not want committed to git
@@ -10,6 +10,16 @@ My config and settings files for OS X
 ```sh
     git clone git@github.com:jfoo1984/dotfiles.git && cd dotfiles && ./sync.sh
 ```
+
+## New computer setup checklist
+
+* [ ] Install [Homebrew](https://brew.sh/)
+* [ ] Clone this repo and run `./sync.sh`
+* [ ] `brew bundle` to install homebrew packages
+* [ ] Set up a password manager
+* [ ] Import iterm2 settings
+
+All critical apps should be installed at this point.
 
 ## Homebrew
 
@@ -29,19 +39,49 @@ For more info, visit the [homebrew-bundle page](https://github.com/Homebrew/home
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+### zsh-autosuggestions
+
+Install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions).
+
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
+### zsh-history-substring-search
+
+Install [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search).
+
+```sh
+ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+```
+
+### zsh-syntax-highlighting
+
+Install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting).
+
+```sh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
 ### zsh-vi-mode plugin
 
-[zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode) is a vim mode plugin for zsh, which can be [installed as a custom oh-my-zsh plugin](https://github.com/jeffreytse/zsh-vi-mode?tab=readme-ov-file#as-an-oh-my-zsh-custom-plugin).
+Install [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
 
 ```sh
 git clone https://github.com/jeffreytse/zsh-vi-mode \
   $ZSH_CUSTOM/plugins/zsh-vi-mode
 ```
 
-Then load as a plugin in `.zshrc`:
+### Adding these plugins to .zshrc
 
 ```sh
-plugins+=(zsh-vi-mode)
+plugins= (
+  ...
+  zsh-autosuggestions
+  zsh-history-substring-search
+  zsh-syntax-highlighting
+  zsh-vi-mode plugin
+)
 ```
 
 ## Prompt
