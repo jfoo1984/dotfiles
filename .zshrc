@@ -30,6 +30,7 @@ plugins=(
   eza
   fzf
   git
+  nodenv
   python
   rails
   ruby
