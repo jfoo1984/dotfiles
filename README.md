@@ -39,50 +39,36 @@ For more info, visit the [homebrew-bundle page](https://github.com/Homebrew/home
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-### zsh-autosuggestions
+### Custom plugins
 
-Install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions).
+* [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+* [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
+* [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+* [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
+* Installation instructions custom plugins below:
 
-```sh
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```
+    ```sh
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-### zsh-history-substring-search
+    git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 
-Install [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search).
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-```sh
- git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-```
-
-### zsh-syntax-highlighting
-
-Install [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting).
-
-```sh
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-
-### zsh-vi-mode plugin
-
-Install [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
-
-```sh
-git clone https://github.com/jeffreytse/zsh-vi-mode \
+    git clone https://github.com/jeffreytse/zsh-vi-mode \
   $ZSH_CUSTOM/plugins/zsh-vi-mode
-```
+   ```
 
-### Adding these plugins to .zshrc
+* adding these plugins to .zshrc (already done in the repo)
 
-```sh
-plugins= (
-  ...
-  zsh-autosuggestions
-  zsh-history-substring-search
-  zsh-syntax-highlighting
-  zsh-vi-mode plugin
-)
-```
+    ```sh
+    plugins= (
+    ...
+    zsh-autosuggestions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+    zsh-vi-mode plugin
+    )
+    ```
 
 ## Prompt
 
