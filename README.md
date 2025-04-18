@@ -94,6 +94,24 @@ The shell prompt is [configured using Starship](https://starship.rs/config/#prom
 
 ## asdf
 
+### Install nodejs
+
+```sh
+asdf plugin add nodejs
+
+# <version> examples: latest, $(.nvmrc), etc.
+asdf install nodejs <version>
+```
+
+### Install ruby
+
+```sh
+asdf plugin add ruby
+
+# <version> examples: latest, $(.ruby-version), etc.
+asdf install ruby <version>
+```
+
 ### Using yarn
 
 Yarn 2.X and greater is installed per project.  After installing yarn with `corepack enable`, it may be necessary to run `asdf reshim nodejs` to make the yarn executable available.

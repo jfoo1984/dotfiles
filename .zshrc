@@ -25,12 +25,10 @@ plugins=(
   asdf
   bundler
   conda
-  chruby
   docker-compose
   eza
   fzf
   git
-  nodenv
   python
   rails
   ruby
