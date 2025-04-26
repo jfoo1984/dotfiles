@@ -1,0 +1,33 @@
+# VCP
+new_tab VCP servers
+cd ~/virtual-cells-platform/entity_registry
+launch --title "backend"
+cd ~/virtual-cells-platform/frontend
+launch --location=vsplit --title "frontend"
+
+new_tab VCP consoles
+cd ~/virtual-cells-platform/entity_registry
+launch --title "backend"
+cd ~/virtual-cells-platform/frontend
+launch --location=vsplit --title "frontend"
+
+new_tab VCP git
+cd ~/virtual-cells-platform
+launch --title "git"
+
+new_tab VCP e2e tests
+cd ~/virtual-cells-platform/frontend/e2e
+launch --title "e2e"
+
+new_tab SDS
+cd ~/sci-components
+launch --title "SDS"
+
+new_tab dotfiles
+cd ~/dotfiles
+launch --title "dotfiles"
+
+focus_os_window
+
+# dotfiles window
+# new_os_window
