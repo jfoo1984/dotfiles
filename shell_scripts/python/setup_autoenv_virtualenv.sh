@@ -5,16 +5,25 @@ function setup_autoenv_virtualenv() {
     return 1
   fi
 
-  local project_dir="${1:-$(basename "$PWD")}"
+  local force=0
+  local project_dir
+
+  # Parse --force
+  if [[ "$1" == "--force" ]]; then
+    force=1
+    shift
+  fi
+
+  project_dir="${1:-$(basename "$PWD")}"
 
   # Get Python path via asdf or fallback
   local python_path
   if command -v asdf >/dev/null 2>&1 && asdf which python >/dev/null 2>&1; then
     python_path="$(asdf which python)"
-    echo "using asdf: $python_path"
+    echo "using asdf python: $python_path"
   else
     python_path="$(command -v python3)"
-    echo "using system: $python_path"
+    echo "using system python: $python_path"
   fi
 
   # Create virtualenv if not already created
@@ -26,20 +35,27 @@ function setup_autoenv_virtualenv() {
     workon "$project_dir"
   fi
 
-  # Create autoenv files
+  # Create or update .autoenv
+  if [[ "$force" -eq 1 || ! -f .autoenv ]]; then
   cat <<EOF > .autoenv
 echo "Activating virtualenv $project_dir"
 workon $project_dir
 EOF
+  fi
 
+  # Create or update .autoenv.leave
+  if [[ "$force" -eq 1 || ! -f .autoenv.leave ]]; then
   cat <<EOF > .autoenv.leave
-echo "Deactivating virtualenv $project_dir"
-if type deactivate >/dev/null 2>&1; then
+echo "Leaving virtualenv $project_dir"
+
+if [[ -n "\$VIRTUAL_ENV" ]]; then
+  echo "Deactivating active virtualenv: \$VIRTUAL_ENV"
   deactivate
 else
-  echo "No virtualenv to deactivate"
+  echo "Virtualenv already deactivated or not active — skipping"
 fi
 EOF
+  fi
 
   echo "✅ Created .autoenv and .autoenv.leave for project '$project_dir'"
 }
