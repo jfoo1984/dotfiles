@@ -1,39 +1,45 @@
-#!/bin/bash
+function setup_autoenv_virtualenv() {
+  # Ensure virtualenvwrapper is loaded
+  if ! command -v mkvirtualenv >/dev/null 2>&1; then
+    echo "⚠️ virtualenvwrapper is not loaded. Make sure it's installed and sourced."
+    return 1
+  fi
 
-source ~/shell_scripts/python/virtualenvwrapper_setup.sh
+  local project_dir="${1:-$(basename "$PWD")}"
 
-# Ensure virtualenvwrapper is loaded
-if [[ -z "$(command -v mkvirtualenv)" ]]; then
-  echo "virtualenvwrapper is not loaded. Please ensure it is installed and sourced in your shell."
-  exit 1
-fi
+  # Get Python path via asdf or fallback
+  local python_path
+  if command -v asdf >/dev/null 2>&1 && asdf which python >/dev/null 2>&1; then
+    python_path="$(asdf which python)"
+    echo "using asdf: $python_path"
+  else
+    python_path="$(command -v python3)"
+    echo "using system: $python_path"
+  fi
 
-# Get the project directory name (same as the environment name)
-project_dir=$(basename "$(pwd)")
+  # Create virtualenv if not already created
+  if ! workon "$project_dir" &>/dev/null; then
+    mkvirtualenv -p "$python_path" "$project_dir"
+    echo "Created virtualenv '$project_dir' with python at $python_path"
+  else
+    echo "Virtualenv '$project_dir' already exists. Activating it."
+    workon "$project_dir"
+  fi
 
-# Create a virtual environment using virtualenvwrapper, named after the project directory
-if ! workon "$project_dir" &> /dev/null; then
-  mkvirtualenv "$project_dir"
-  echo "Created virtual environment: $project_dir"
-else
-  echo "Virtual environment '$project_dir' already exists. Activating it."
-fi
-
-$auto_env
-# Create the .env file with the command to activate the virtualenv
-cat <<EOF > $AUTOENV_ENV_FILENAME
+  # Create autoenv files
+  cat <<EOF > .autoenv
 echo "Activating virtualenv $project_dir"
 workon $project_dir
 EOF
 
-# Create the .env.leave file with the deactivate command
-cat <<EOF > $AUTOENV_ENV_LEAVE_FILENAME
+  cat <<EOF > .autoenv.leave
 echo "Deactivating virtualenv $project_dir"
 if type deactivate >/dev/null 2>&1; then
-    deactivate
+  deactivate
 else
-    echo "No virtualenv to deactivate"
+  echo "No virtualenv to deactivate"
 fi
 EOF
 
-echo "'$AUTOENV_ENV_FILENAME' and '$AUTOENV_ENV_LEAVE_FILENAME' files created for project '$project_dir'"
+  echo "✅ Created .autoenv and .autoenv.leave for project '$project_dir'"
+}

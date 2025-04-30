@@ -45,7 +45,6 @@ alias installnodeversion="~/shell_scripts/install_node_version_with_nodenv.sh"
 alias ping='prettyping --nolegend'
 
 # python
-alias setup_autoenv_virtualenv="~/shell_scripts/python/setup_autoenv_virtualenv.sh"
 alias curvenv="echo $VIRTUAL_ENV"
 alias exitvenv="deactivate"
 
