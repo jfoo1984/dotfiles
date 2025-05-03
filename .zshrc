@@ -34,7 +34,9 @@ fi
 # zsh-autosuggestions installation: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 # zsh-history-substring-search: https://github.com/zsh-users/zsh-history-substring-search?tab=readme-ov-file#install
 # zsh-syntax-highlighting: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
+# autoupdate-zsh-plugin: https://github.com/tamcore/autoupdate-oh-my-zsh-plugins?tab=readme-ov-file#install
 plugins=(
+  autoupdate
   brew
   aliases
   asdf

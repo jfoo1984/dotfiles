@@ -45,28 +45,34 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 * [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 * [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
-* Installation instructions custom plugins below:
+* Install custom plugins:
 
     ```sh
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
     git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.
+
+    git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
     git clone https://github.com/jeffreytse/zsh-vi-mode \
   $ZSH_CUSTOM/plugins/zsh-vi-mode
+
+    git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
    ```
 
-* adding these plugins to .zshrc (already done in the repo)
+* Add these plugins to .zshrc (already done in the repo)
 
     ```sh
     plugins= (
     ...
+    autoupdate
     zsh-autosuggestions
     zsh-history-substring-search
     zsh-syntax-highlighting
     zsh-vi-mode plugin
+    ...
     )
     ```
 
