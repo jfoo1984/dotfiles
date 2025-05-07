@@ -4,7 +4,7 @@ export AUTOENV_ENV_FILENAME=".autoenv"
 export AUTOENV_ENV_LEAVE_FILENAME=".autoenv.leave"
 
 # provides alias to setup an autoenv for virtualenvwrapper
-source shell_scripts/python/setup_autoenv_virtualenv.sh
+source ~/shell_scripts/python/setup_autoenv_virtualenv.sh
 # endregion autoenv
 
 # ohmyzsh .zshrc template https://github.com/ohmyzsh/ohmyzsh/blob/master/templates/zshrc.zsh-template
@@ -25,11 +25,15 @@ if [ -z "$ASDF_DIR" ] && [ -f "$HOME/.asdf/asdf.sh" ]; then
   source "$HOME/.asdf/asdf.sh"
 fi
 
+# region virtualenvwrapper pre-load setup
+# Set WORKON_HOME for virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+
 # Use asdf-managed Python for virtualenvwrapper
-# Must be set before loading virtualenvwrapper
 if command -v asdf >/dev/null && asdf which python >/dev/null 2>&1; then
   export VIRTUALENVWRAPPER_PYTHON="$(asdf which python)"
 fi
+# endregion virtualenvwrapper pre-load setup
 
 # zsh-autosuggestions installation: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
 # zsh-history-substring-search: https://github.com/zsh-users/zsh-history-substring-search?tab=readme-ov-file#install
