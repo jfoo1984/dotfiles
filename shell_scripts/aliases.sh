@@ -50,3 +50,6 @@ alias exitvenv="deactivate"
 
 # top
 alias top="sudo htop"
+
+# claude
+alias claude="~/shell_scripts/run_claude.sh"
