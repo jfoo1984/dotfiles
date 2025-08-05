@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Get the latest installed Node.js version via asdf
+# Get the latest installed Node.js version to run Claude itself
 LATEST_NODE_VERSION=$(asdf list nodejs | tr -d ' ' | grep -E '^[0-9]+\.' | sort -V | tail -n 1)
 
 if [[ -z "$LATEST_NODE_VERSION" ]]; then
@@ -9,8 +9,5 @@ if [[ -z "$LATEST_NODE_VERSION" ]]; then
   exit 1
 fi
 
-# Set the version in environment so asdf knows which one to use
-export ASDF_NODEJS_VERSION="$LATEST_NODE_VERSION"
-
-# Run Claude using that version of Node
-exec asdf exec claude "$@"
+# Run Claude with the latest Node.js version (only affects this command)
+ASDF_NODEJS_VERSION="$LATEST_NODE_VERSION" exec asdf exec claude "$@"
