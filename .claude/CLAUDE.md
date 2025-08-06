@@ -1,5 +1,9 @@
 # Global Claude Code Instructions
 
+**⚠️ IMPORTANT**: This file is managed in `~/dotfiles/.claude/CLAUDE.md` and synced to `~/.claude/CLAUDE.md`.
+**Always edit the version in `~/dotfiles/.claude/CLAUDE.md`**, then run `~/dotfiles/sync.sh` to apply changes.
+Editing `~/.claude/CLAUDE.md` directly will be overwritten on the next sync.
+
 ## Shell Environment Setup
 
 **IMPORTANT**: Always source ~/.zshrc before running shell commands to avoid environment errors (asdf, nvm, etc.):
