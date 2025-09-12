@@ -11,15 +11,17 @@ launch --title "backend"
 cd ~/virtual-cells-platform/frontend
 launch --location=vsplit --title "frontend"
 
-new_tab npx claude
-cd ~/virtual-cells-platform/
-launch --title "claude 1"
-cd ~/virtual-cells-platform/
-launch --location=vsplit --title "claude 2"
-
 new_tab VCP git
-cd ~/virtual-cells-platform
+cd ~/virtual-cells-platform/
 launch --title "git"
+
+new_tab claude1
+cd ~/virtual-cells-platform/
+launch --title "claude"
+
+new_tab claude2
+cd ~/virtual-cells-platform/
+launch --title "claude"
 
 new_tab VCP e2e tests
 cd ~/virtual-cells-platform/frontend/e2e
