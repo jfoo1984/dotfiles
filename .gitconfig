@@ -25,7 +25,7 @@
   attributesfile = ~/.gitattributes
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
   autocrlf = false
-  editor = code --w
+  editor = hx
 [color "branch"]
   current = yellow reverse
   local = yellow
