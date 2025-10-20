@@ -21,7 +21,11 @@ launch --title "claude"
 
 new_tab claude2
 cd ~/virtual-cells-platform/
-launch --title "claude"
+launch --title "claude2"
+
+new_tab claude3
+cd ~/virtual-cells-platform/
+launch --title "claude3"
 
 new_tab VCP e2e tests
 cd ~/virtual-cells-platform/frontend/e2e

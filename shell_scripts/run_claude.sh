@@ -10,4 +10,5 @@ if [[ -z "$LATEST_NODE_VERSION" ]]; then
 fi
 
 # Run Claude with the latest Node.js version (only affects this command)
-ASDF_NODEJS_VERSION="$LATEST_NODE_VERSION" exec asdf exec claude "$@"
+# Don't use 'exec' so ASDF_NODEJS_VERSION is properly inherited by asdf
+ASDF_NODEJS_VERSION="$LATEST_NODE_VERSION" asdf exec claude "$@"

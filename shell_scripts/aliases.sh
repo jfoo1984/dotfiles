@@ -51,8 +51,5 @@ alias exitvenv="deactivate"
 # top
 alias top="sudo htop"
 
-# claude
-alias claude="~/shell_scripts/run_claude.sh"
-
 # install global deps
 alias globaldeps="~/shell_scripts/install_global_deps.sh"

@@ -95,6 +95,21 @@ asdf plugin add nodejs
 asdf install nodejs <version>
 ```
 
+### Set global Node.js version
+
+After installing Node.js, set a global version for use outside of projects:
+
+```sh
+# Set global version (creates/updates ~/.tool-versions)
+asdf set -u nodejs 24.1.0  # or whatever version you installed
+
+# Verify it's set
+cat ~/.tool-versions
+node -v
+```
+
+**Important:** Don't include `~/.tool-versions` in your dotfiles repo - it's machine-specific and should be managed per machine.
+
 ### Install ruby
 
 ```sh
@@ -107,3 +122,13 @@ asdf install ruby <version>
 ### Using yarn
 
 Yarn 2.X and greater is installed per project.  After installing yarn with `corepack enable`, it may be necessary to run `asdf reshim nodejs` to make the yarn executable available.
+
+### Reshimming after npm global installs
+
+After installing global npm packages (like `npm install -g @anthropic-ai/claude-code`), you need to run:
+
+```sh
+asdf reshim nodejs
+```
+
+This creates shims for the newly installed global binaries so they're available in your PATH.
