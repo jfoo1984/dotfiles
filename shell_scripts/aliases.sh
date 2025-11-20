@@ -36,11 +36,6 @@ alias fs="stat -f \"%z bytes\""
 # ncdu - replace du
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
-# node
-alias upgradenodenv="brew upgrade nodenv node-build"
-alias listnodeversions="nodenv install -l"
-alias installnodeversion="~/shell_scripts/install_node_version_with_nodenv.sh"
-
 # prettyping
 alias ping='prettyping --nolegend'
 

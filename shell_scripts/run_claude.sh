@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Get the latest installed Node.js version to run Claude itself
-LATEST_NODE_VERSION=$(asdf list nodejs | tr -d ' ' | grep -E '^[0-9]+\.' | sort -V | tail -n 1)
+LATEST_NODE_VERSION=$(asdf list nodejs | tr -d ' *' | grep -E '^[0-9]+\.' | sort -V | tail -n 1)
 
 if [[ -z "$LATEST_NODE_VERSION" ]]; then
   echo "❌ No Node.js versions installed via asdf. Please install one with:"
