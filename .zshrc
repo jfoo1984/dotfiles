@@ -20,11 +20,6 @@ ZSH_THEME=""
 zstyle ':omz:plugins:eza' 'git-status' yes
 zstyle ':omz:plugins:eza' 'header' yes
 
-# Ensure asdf is ready - plugin included for other convenience functions
-if [ -z "$ASDF_DIR" ] && [ -f "$HOME/.asdf/asdf.sh" ]; then
-  source "$HOME/.asdf/asdf.sh"
-fi
-
 # region virtualenvwrapper pre-load setup
 # Set WORKON_HOME for virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
