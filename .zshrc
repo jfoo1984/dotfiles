@@ -59,6 +59,9 @@ plugins=(
   virtualenvwrapper
 )
 
+# Partial word acceptance of autosuggestion (zsh-vi-mode resets bindings, so use its hook)
+zvm_after_init_commands+=('bindkey "\e[1;3C" forward-word')  # Option+Right
+
 source $ZSH/oh-my-zsh.sh
 
 # autoenv - mainly used to automatically activate and deactivate python virtual environments
