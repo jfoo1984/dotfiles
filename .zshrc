@@ -123,19 +123,12 @@ _fzf_comprun() {
   esac
  }
 
-# Load ~/shell_script/[aliases,functions]
-for file in ~/shell_scripts/{aliases,functions,apitokens,exports,extras}.sh; do
+# Load topic-specific files from ~/shell_scripts
+for file in ~/shell_scripts/{aliases,apitokens,exports,extras,prompt}.sh; do
   [ -r "$file" ] && source "$file"
 done
 unset file
 # endregion fzf file and folder completion
-
-# Set terminal tab title to current directory
-# https://starship.rs/advanced-config/#change-window-title
-function set_win_title(){
-    echo -ne "\033]0; $(basename "$PWD") \007"
-}
-starship_precmd_user_func="set_win_title"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

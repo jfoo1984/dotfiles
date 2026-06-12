@@ -48,3 +48,6 @@ alias top="sudo htop"
 
 # install global deps
 alias globaldeps="~/shell_scripts/install_global_deps.sh"
+
+# opencode
+alias oc="opencode"
