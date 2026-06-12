@@ -1,0 +1,54 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
+  "agent": {
+    "explore": {
+      "model": "opencode/claude-sonnet-4-6",
+      "effort": "max"
+    },
+    "general": {
+      "model": "opencode/claude-sonnet-4-6",
+      "effort": "medium",
+      "steps": 40
+    },
+    "deep": {
+      "description": "Use for complex tasks requiring architectural judgment, multi-file integration, or nuanced analysis",
+      "mode": "subagent",
+      "model": "opencode/claude-opus-4-6",
+      "effort": "max",
+      "steps": 50
+    }
+  },
+  "mcp": {
+    "linear": {
+      "type": "local",
+      "command": ["npx", "-y", "mcp-server-linear"],
+      "enabled": true,
+      "environment": {
+        "LINEAR_ACCESS_TOKEN": "{env:LINEAR_ACCESS_TOKEN}"
+      }
+    },
+    "sentry": {
+      "type": "remote",
+      "url": "https://mcp.sentry.dev/mcp",
+      "enabled": true,
+      "oauth": {}
+    },
+    "datadog": {
+      "type": "local",
+      "command": ["/Users/jfu/.local/bin/datadog_mcp_cli"],
+      "enabled": true
+    },
+    "posthog": {
+      "type": "remote",
+      "url": "https://mcp.posthog.com/mcp",
+      "enabled": true,
+      "oauth": {}
+    },
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "enabled": true
+    }
+  }
+}
