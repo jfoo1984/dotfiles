@@ -2,7 +2,7 @@
 cd "$(dirname "$0")"
 git pull
 
-excluded_dirs=(".git/" ".DS_Store" "sync.sh" "README.md" "homebrew/" "Brewfile" "itermColors/" ".ruby-lsp")
+excluded_dirs=(".git/" ".DS_Store" "sync.sh" "README.md" "homebrew/" "Brewfile" "itermColors/" ".ruby-lsp" "claude-agent-prompts/")
 
 # build base rsync command with arguments
 rsync_command_args=(rsync)
