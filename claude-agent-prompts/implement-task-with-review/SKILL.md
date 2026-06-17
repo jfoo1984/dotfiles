@@ -62,7 +62,7 @@ Never use Haiku for any role here — the tasks are too judgment-heavy.
 
 ## Available lenses
 
-Lenses live in `.claude/skills/review-lenses/lenses/`. The core flow uses `code-quality` + `staff-engineer`; add `frontend` (for `js/apps/fleetweb/**` changes), `backend-go` (for `go/**` changes), or `adversarial` (opt-in, high-stakes correctness) when the task's changed files warrant it. See the lens-library `README.md` for the caller-filled slots (Target / What was implemented / Already verified) each lens expects.
+Lenses live in `.claude/skills/review-lenses/lenses/`. The core flow uses `code-quality` + `staff-engineer`, plus `test-coverage` whenever the task adds testable code; add `frontend` (`js/apps/fleetweb/**`), `backend-go` (`go/**`), or `deploy-safety` (migrations / `.proto` / helm) when the changed files warrant it, and `adversarial` (opt-in) for high-stakes correctness. See the lens-library `README.md` for the caller-filled slots (Target / What was implemented / Already verified) each lens expects.
 
 ## Steps
 

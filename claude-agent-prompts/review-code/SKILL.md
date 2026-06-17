@@ -42,10 +42,12 @@ If the user supplies a PR number, pull both the diff and the PR description — 
 **Always run:**
 - `code-quality` — line-specific: naming, edge cases, error handling, types, dead code, comments
 - `staff-engineer` — architectural: right abstraction, coupling, future-reader surprise, sleep-losers
+- `test-coverage` — flags new/changed logic that lacks meaningful tests. Runs on any PR that changes source code; skip only when the diff is docs/config/migration/proto/helm-only (nothing to test).
 
-**Auto-add by path (log which glob triggered the addition):**
+**Auto-add by trigger (log which fired):**
 - `frontend` — any changed path under `js/apps/fleetweb/**`, or other rendered UI surfaces
-- `backend-go` — any changed path matches `go/**`
+- `backend-go` — any changed path under `go/**`
+- `deploy-safety` — the diff touches Atlas migrations, `.proto` files, or helm/deployment values
 
 **Opt-in only:**
 - `adversarial` — run when the user asks, or when the diff touches a state machine, ACL/auth path, or money path. State explicitly if adversarial is being skipped and why.
@@ -54,8 +56,8 @@ If the user supplies a PR number, pull both the diff and the PR description — 
 
 **Before dispatching, log:**
 ```
-Selected lenses: code-quality, staff-engineer[, frontend, backend-go, adversarial]
-Reason: <which path globs matched / user request / opt-in trigger>
+Selected lenses: code-quality, staff-engineer, test-coverage[, frontend, backend-go, deploy-safety, adversarial]
+Reason: <which triggers fired / user request / opt-in>
 ```
 
 ---
