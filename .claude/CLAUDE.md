@@ -135,3 +135,9 @@ remaining value can be named for what it positively is.
   reviewer has a substantive unresolved thread (e.g., an architectural
   objection); my approval would unblock merging past a discussion that
   isn't mine to waive.
+
+### Fetch before editing a shared branch
+
+`git fetch` and reconcile with `origin/<branch>` before editing a feature
+branch — CI bots and parallel CCW sessions push commits, so the local
+checkout is often behind and editing a stale base regresses their work.

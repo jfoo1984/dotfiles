@@ -33,7 +33,7 @@ Audit at the component and file level across these dimensions:
 
 - **shadcn vs MUI adherence** — new components (and new primitives) must be built shadcn-style: Tailwind + Radix primitives, placed in `components/ui/`. Flag any *new* MUI component introduced where a shadcn/Tailwind equivalent exists. Do NOT flag an existing MUI component being bug-fixed in place — the MUI→shadcn migration is intentional and per-component; touching a file doesn't require refactoring it.
 
-- **Tailwind usage** — layout, spacing, and dark mode (`dark:` variants) should use Tailwind utility classes. Flag inline `style=` props where Tailwind utilities apply. Exception: dynamic values that can't be expressed as static utilities (e.g., computed widths). On mobile surfaces, flag `100vh` / `h-screen` / `vh`-based heights — they clip content under the browser chrome (see the `fleetweb-mobile-viewport` skill).
+- **Tailwind usage** — layout, spacing, and dark mode (`dark:` variants) should use Tailwind utility classes. Flag inline `style=` props where Tailwind utilities apply. Exception: dynamic values that can't be expressed as static utilities (e.g., computed widths). On mobile surfaces, flag **bare** `100vh` / `h-screen` / `vh` heights that lack a `dvh` fallback — they clip content under the browser chrome. The documented fix (a `100vh` base plus an `@supports (height: 100dvh)` override, or the Tailwind equivalent) is correct — don't flag it. See the `fleetweb-mobile-viewport` skill.
 
 - **Accessibility** — semantic HTML elements (`<button>`, `<nav>`, not `<div onClick>`), form labels, keyboard and focus handling, `aria-*` attributes where Radix primitives don't already provide them. Call out missing `aria-label` on icon-only buttons. Note the virtualized-table rule: `@tanstack/react-virtual` rows need `aria-rowindex` + `aria-rowcount` (see design.md gotcha). Don't flag `role="status"` on row-level polling UI — that's a regression; only singletons should use live regions.
 
@@ -41,9 +41,9 @@ Audit at the component and file level across these dimensions:
 
 - **Prop drilling** — props threaded more than 2 levels down for non-trivial state signal a need for context or a hook. Flag when you see it.
 
-- **Async UI states** — every query/mutation surface handles loading, empty, and error branches, with controls disabled while in flight. Flag a `useQuery`/`useMutation` whose `isPending` / `isError` / empty-data path has no UI.
+- **Async UI states** — every query/mutation surface renders loading, empty, and error branches, and disables the triggering control while a mutation is in flight (prevents double-submit). Flag a `useQuery`/`useMutation` whose `isPending` / `isError` / empty-data path has no UI.
 
-- **Form UX** — submit gated on validity and disabled while submitting (double-submit prevented at the UI layer); validation feedback timing is sensible; success side-effects fire on `onSuccess`, not optimistically.
+- **Form UX** — submit gated on validity; validation feedback timing is sensible; success side-effects fire on `onSuccess`, not optimistically.
 
 ---
 
@@ -71,7 +71,7 @@ These are named, concrete rules. Raise a finding when one is violated.
 
 - **Analytics context must not carry PII** — `redactSensitiveFields` only scrubs `pin`/`password`. Keep email, name, tokens, free-text strings, raw error bodies, and `...reqBody` spreads out of `trackEvent` context. Use booleans/enums/counts instead.
 
-- **Protobuf-backed queries decode once** — in `queries/`, decode wire JSON with a single `fromJson(Schema, json, { ignoreUnknownFields: true })` and use the message directly; never round-trip through `toJson`. Consumers use proto-native types: `bigint` for int64/uint64 (`Number(x)` to render), `Timestamp` via `timestampDate`, and **numeric** enums (`MyEnum.MEMBER`, never the string `"MY_ENUM_MEMBER"`). Test fixtures use `create(Schema, {…})`. String-enum comparisons and `toJson` round-trips are blocking.
+- **Protobuf-backed queries — decode to the message, don't round-trip** *(emerging pattern, `js/apps/fleetweb/CLAUDE.md`)* — newer proto-backed queries decode once with `fromJson(Schema, json, { ignoreUnknownFields: true })` and use the **message** object directly: `bigint` for int64/uint64 (`Number(x)` to render values within 2^53; keep full-range values — raw timestamps, byte offsets, external IDs — as `bigint`), `Timestamp` via `timestampDate`, **numeric** enums (`MyEnum.MEMBER`, not `"MY_ENUM_MEMBER"`); test fixtures use `create(Schema, {…})`. Flag a *new* query that round-trips through `toJson` or compares string enums. Do **not** flag existing `toJson`-returning queries (eligibility, reports) — that's the legacy pattern being migrated, not a regression.
 
 ---
 

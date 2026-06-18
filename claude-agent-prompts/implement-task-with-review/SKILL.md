@@ -75,7 +75,7 @@ Lenses live in `.claude/skills/review-lenses/lenses/`. The core flow uses `code-
 7. **Format.** Targeted on changed files only (see Critical rules).
 8. **Commit + push.** Stage only the task's intended files (formatter / build may have touched unrelated drift — discard with `git restore` first). Match the project's commit-message convention. Don't force-push; if remote has bot-added commits, `git pull --rebase && git push`.
 9. **Mark complete** via TodoWrite / TaskUpdate.
-10. **Lens gap (optional).** If a reviewer lens missed something real, repeatedly flagged a false positive, or relied on a drifted convention, note it in one line and route the fix through `reflect-and-update` — don't edit the lens inline.
+10. **Lens gap (optional).** If a reviewer lens missed something real, repeatedly flagged a false positive, or relied on a drifted convention, add a one-line `Lens gap:` note (same label `review-code` uses) and route the fix through `reflect-and-update` — don't edit the lens inline.
 
 ## Relation to other skills
 
