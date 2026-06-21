@@ -51,7 +51,7 @@ Under 500 words.
 ```
 ### Architectural assessment
 
-Numbered findings against the 4 questions above. For each, give one of:
+Numbered findings against the questions above. For each, give one of:
 - "Defensible as-is" (no action, brief reasoning)
 - "Worth changing now" (specific change + cost estimate)
 - "Worth flagging for follow-up" (don't change now but document — where?)
