@@ -40,7 +40,7 @@ Don't re-litigate code-quality findings. Read the actual code with a different l
 
 ## Severity classification
 
-- **Blocking** — structural debt that will trap future work (e.g., "this helper lives in the mock file but production imports it — will break at mock-deletion time")
+- **Blocking** — structural debt that will trap future work (e.g., a helper that leaks across a boundary it shouldn't, making the boundary hard to enforce later)
 - **Important** — forward-looking concern worth flagging, may be addressable as follow-up rather than in this task
 - **Worth flagging for follow-up** — context the next engineer needs, even if no change is needed now
 
