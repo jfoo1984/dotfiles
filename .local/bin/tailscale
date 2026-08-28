@@ -1,0 +1,5 @@
+#!/bin/sh
+# The Tailscale GUI app ships the CLI inside its bundle and resolves its bundle
+# identity from the executable path, so it must be invoked in place — a symlink
+# onto PATH dies with "bundleIdentifier is unknown to the registry".
+exec /Applications/Tailscale.app/Contents/MacOS/Tailscale "$@"

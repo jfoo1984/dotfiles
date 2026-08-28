@@ -8,6 +8,9 @@ export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 # add support for ctrl+o to open selected file in VS Code with fzf
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 
+# user-installed CLIs (uv tools, pipx, pip --user)
+export PATH="$HOME/.local/bin:$PATH"
+
 # poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 
