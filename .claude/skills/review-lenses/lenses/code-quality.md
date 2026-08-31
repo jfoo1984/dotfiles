@@ -30,9 +30,9 @@ Center the review on the change, but read beyond the diff when it matters: check
 **Line-specific code-quality.** Audit at the file:line level:
 
 - **Naming** — names match what things do (not how they work). Function / variable / file names self-explanatory.
-- **Edge cases** — null / undefined / empty / overflow / off-by-one. Boundary conditions that might have been missed.
+- **Edge cases** — null / empty / uninitialized / overflow / off-by-one. Boundary conditions that might have been missed.
 - **Error handling** — explicit and useful (includes context). No silent failures. No catch-and-rethrow-without-context.
-- **Types** — tight; no unjustified `any` / `unknown` / `as` casts. Branded types where the project uses them.
+- **Types** — tight; no unnecessary escape hatches (e.g. `any`, unsafe casts, bypassing the type system). Follow the project's type conventions.
 - **Dead code / unused imports** — anything orphaned by recent changes.
 - **Comments** — only where WHY is non-obvious. Code that re-narrates itself in comments is a smell.
 

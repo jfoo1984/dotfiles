@@ -45,7 +45,7 @@ Center the review on the change, but read beyond the diff when it matters: check
 
 ## Severity classification
 
-- **blocking** — structural debt that will trap future work (e.g., a helper that lives in the mock file but production imports it — breaks at mock-deletion time).
+- **blocking** — structural debt that will trap future work (e.g., a helper that leaks across a boundary it shouldn't, making the boundary hard to enforce later).
 - **important** — forward-looking concern worth flagging; may be addressable as follow-up rather than immediately.
 - **minor** — context the next engineer needs, even if no change is needed now.
 
