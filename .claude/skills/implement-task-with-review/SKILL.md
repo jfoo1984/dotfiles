@@ -65,8 +65,8 @@ Never use Haiku for any role here — the tasks are too judgment-heavy.
 1. **Read the task.** From the plan file, extract: goal, files, acceptance criteria, verify command, notes. If the task spans unrelated concerns, ask the user to split before proceeding.
 2. **Dispatch implementer** via Agent tool with `subagent_type: general-purpose`, prompt from `prompts/implementer.md`. Fill the slots.
 3. **Handle the implementer's report.** DONE → proceed. BLOCKED → diagnose root cause (missing context? more capable model needed? task ill-defined?) and act accordingly. NEEDS_CONTEXT → answer + re-dispatch.
-4. **Dispatch code-quality reviewer** via Agent tool with `subagent_type: feature-dev:code-reviewer`, prompt from `prompts/code-quality-reviewer.md`. Apply blocking + important fixes per decision rules.
-5. **Dispatch staff-engineer reviewer** via Agent tool with `subagent_type: feature-dev:code-reviewer`, prompt from `prompts/staff-engineer-reviewer.md`. Same fix-apply pattern. Forward-looking concerns often belong in "open follow-ups" rather than the current task.
+4. **Dispatch code-quality reviewer** via Agent tool with `subagent_type: superpowers-extended-cc:code-reviewer`, prompt from `prompts/code-quality-reviewer.md`. Apply blocking + important fixes per decision rules.
+5. **Dispatch staff-engineer reviewer** via Agent tool with `subagent_type: superpowers-extended-cc:code-reviewer`, prompt from `prompts/staff-engineer-reviewer.md`. Same fix-apply pattern. Forward-looking concerns often belong in "open follow-ups" rather than the current task.
 6. **Verify.** Run the project's typecheck / lint / build. Fix anything that fails — not a separate review pass.
 7. **Format.** Targeted on changed files only (see Critical rules).
 8. **Commit + push.** Stage only the task's intended files (formatter / build may have touched unrelated drift — discard with `git restore` first). Match the project's commit-message convention. Don't force-push; if remote has bot-added commits, `git pull --rebase && git push`.

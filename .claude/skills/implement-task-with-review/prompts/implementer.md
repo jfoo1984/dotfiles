@@ -35,7 +35,7 @@ The project at [WORKING DIR] has local conventions in CLAUDE.md / AGENTS.md (pos
 
 ## User preferences for this session
 
-[INJECT VERBATIM: anything the user stated in conversation — e.g., "don't auto-commit," "stage for review," "no new MUI," "named exports preferred"]
+[INJECT VERBATIM: anything the user stated in conversation — e.g., "don't auto-commit," "stage for review," "match the existing error-handling pattern," "named exports preferred"]
 
 ## Code organization
 

@@ -1,6 +1,6 @@
 # Staff-Engineer Reviewer Prompt Template
 
-Fill the bracketed slots. Use `subagent_type: feature-dev:code-reviewer`. Pass `model: "opus"` (architectural judgment benefits meaningfully from Opus).
+Fill the bracketed slots. Use `subagent_type: superpowers-extended-cc:code-reviewer`. Pass `model: "opus"` (architectural judgment benefits meaningfully from Opus).
 
 This reviewer's lens is **architectural / long-term**: right abstraction, future-trap detection, cross-task coupling, "would I lose sleep over this." Line-specific bugs are the code-quality reviewer's job — don't re-find what they already caught.
 

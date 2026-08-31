@@ -1,6 +1,6 @@
 # Code-Quality Reviewer Prompt Template
 
-Fill the bracketed slots. Use `subagent_type: feature-dev:code-reviewer`. Pass `model: "sonnet"` (rarely needs Opus).
+Fill the bracketed slots. Use `subagent_type: superpowers-extended-cc:code-reviewer`. Pass `model: "sonnet"` (rarely needs Opus).
 
 This reviewer's lens is **line-specific**: naming, edge cases, error handling, types, dead code, comment quality. Architectural concerns are the staff-engineer reviewer's job — don't ask this reviewer for both.
 
